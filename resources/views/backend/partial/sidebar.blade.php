@@ -127,38 +127,58 @@
                                 </div>
                             </li>
 
-                            <li>
-                                <a href="apps-social-feed.html">
-                                    <span class="badge badge-pink float-right">Hot</span>
-                                    <i data-feather="rss"></i>
-                                    <span> Social Feed </span>
+                            
+                            {{-- <li>
+                                <a href="#sidebarContacts" data-toggle="collapse">
+                                    <i data-feather="book"></i>
+                                    <span> Expense Category </span>
+                                    <span class="menu-arrow"></span>
                                 </a>
-                            </li>
+                                <div class="collapse" id="sidebarContacts">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="contacts-list.html">Members List</a>
+                                        </li>
+                                        <li>
+                                            <a href="contacts-profile.html">Profile</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li> --}}
 
-                            <li>
-                                <a href="apps-companies.html">
-                                    <i data-feather="activity"></i>
-                                    <span> Companies </span>
+
+                            {{-- <li>
+                                <a href="{{ route('expense.category.list') }}">
+                                    <span class="badge badge-pink float-right"></span>
+                                    <i data-feather="rss"></i>
+                                    <span> Expense Category</span>
                                 </a>
-                            </li>
+                            </li> --}}
+
+                           
 
                             <li>
                                 <a href="#sidebarProjects" data-toggle="collapse">
                                     <i data-feather="briefcase"></i>
-                                    <span> Projects </span>
+                                    <span> Expense </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <div class="collapse" id="sidebarProjects">
                                     <ul class="nav-second-level">
+
                                         <li>
-                                            <a href="project-list.html">List</a>
+                                            <a href="{{ route('expense.category.list') }}">Expense Category</a>
                                         </li>
+
                                         <li>
+                                            <a href="{{ route('expense.list') }}">Expense List</a>
+                                        </li>
+                                        {{-- <li>
                                             <a href="project-detail.html">Detail</a>
                                         </li>
                                         <li>
                                             <a href="project-create.html">Create Project</a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                             </li>
@@ -185,27 +205,30 @@
                             </li>
 
                             <li>
-                                <a href="#sidebarContacts" data-toggle="collapse">
-                                    <i data-feather="book"></i>
-                                    <span> Contacts </span>
+                                <a href="#sidebarCharts" data-toggle="collapse">
+                                    <i data-feather="bar-chart-2"></i>
+                                    <span> Patinets Section </span>
                                     <span class="menu-arrow"></span>
                                 </a>
-                                <div class="collapse" id="sidebarContacts">
+                                <div class="collapse" id="sidebarCharts">
                                     <ul class="nav-second-level">
                                         <li>
-                                            <a href="contacts-list.html">Members List</a>
+                                            <a href="#">Add Patient</a>
                                         </li>
                                         <li>
-                                            <a href="contacts-profile.html">Profile</a>
+                                            <a href="#">Patients List</a>
                                         </li>
+                                         
                                     </ul>
                                 </div>
                             </li>
 
+
+                           
                             <li>
                                 <a href="#sidebarTickets" data-toggle="collapse">
                                     <i data-feather="aperture"></i>
-                                    <span> Tickets </span>
+                                    <span> Reports Section </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <div class="collapse" id="sidebarTickets">
@@ -219,7 +242,7 @@
                                     </ul>
                                 </div>
                             </li>
-
+{{-- 
                             <li>
                                 <a href="apps-file-manager.html">
                                     <i data-feather="folder-plus"></i>
@@ -602,7 +625,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> --}}
                         </ul>
 
                     </div>

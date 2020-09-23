@@ -14,19 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/user/dashboard', function () {
-    return view('backend.index');
+return view('backend.index');
 })->name('admin.dashboard');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-/*Member Registration Route Start heree
-
+/*Member Registration Route Start here
 @Author:Ruhin
 @Controller : RegistrationController
 @view:Auth\Register
@@ -34,8 +33,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('become/member','RegistrationController@register')->name('become.member');
 
-/*Userlist Route Start heree
+//Member Registration Route Start here
 
+/*Userlist Route Start heree
 @Author:Ruhin
 @Controller : SettingsController
 @view:backend\profile
@@ -44,24 +44,22 @@ Route::post('become/member','RegistrationController@register')->name('become.mem
 Route::get('user/profile','SettingsController@getUserList')->name('userlist');
 
 /*Nursing route Start here
-    @Author:Ruhin Mia
-    @controller: NurseController
-    @view: backend/nurse
+@Author:Ruhin Mia
+@controller: NurseController
+@view: backend/nurse
 */
 
 Route::get('customer/list','CustomerController@getCustomerList')->name('customerlist');
 Route::post('customer/store','CustomerController@storeCustomerInfo')->name('customer.store');
-
-
 Route::put('customer/update/{id}','CustomerController@update')->name('customer.update');
 Route::delete('customer/destroy/{id}','CustomerController@destroy')->name('customer.destroy');
 
 // profile Setting Route End Here
 
 /*Nursing route Start here
-    @Author:Ruhin Mia
-    @controller: NurseController
-    @view: backend/nurse
+@Author:Ruhin Mia
+@controller: NurseController
+@view: backend/nurse
 */
 
 Route::resource('nurse','NurseController');
@@ -77,17 +75,17 @@ Route::get('invoice-list','SaleController@allInvoiceList')->name('sales.list');
 
 /*Find the product Price */
 
- Route::post('find/product/price','SaleController@findProductInfo');
- Route::post('product/sale','SaleController@saleProduct')->name('product.sale');
+Route::post('find/product/price','SaleController@findProductInfo');
+Route::post('product/sale','SaleController@saleProduct')->name('product.sale');
 /*Find the product Price End here*/
- 
+
 /*Print Invoice Route Start here*/
 
 Route::get('customer/invoice/{invoice_no}','SaleController@showCustomerInvoice')->name('customer.invoice');
 
 /*End Route For invoice*/
 
- /*Account Routes Start here*/
+/*Account Routes Start here*/
 
 Route::get('account/lists','AccountController@index')->name('account.list');
 Route::post('account/store','AccountController@Store')->name('account.create');
@@ -102,26 +100,57 @@ Route::post('customer/due/payment','CustomerController@customerDuePayment')->nam
 /*Account Routes End here*/
 
 /*Test Invoice Page Route*/
- 
- Route::get('view/invoice',function(){
 
-    return view('backend.invoice.invoice');
- });
+Route::get('view/invoice',function(){
 
- /*Test Invoice Page Route End*/
+return view('backend.invoice.invoice');
+});
 
- /*
-    @Site settings Route 
-    @Author:Ruhin Mia
-    @Controller : WebsettingController
-    @ View:backend/websettings
+/*Test Invoice Page Route End*/
 
- */
+/*
+@Site settings Route 
+@Author:Ruhin Mia
+@Controller : WebsettingController
+@ View:backend/websettings
+
+*/
 
 Route::get('update/web-settings','WebsettingController@updateSiteInfo')->name('website.settings');
 Route::put('update/web-settings','WebsettingController@updateInfo')->name('website.settings.update');
 
 /*Site Settings Route End here*/
 
+/*Expense Category  Route Start here
 
+@Author:Ruhin
+@Controller : ExpenseCategoryController
+@view:backend\exepnse
+*/
 
+Route::get('expense-category-list','ExpenseCategoryController@index')->name('expense.category.list');
+Route::post('store-expense-category','ExpenseCategoryController@storeCategory')->name('expense.category.store');
+Route::put('update-expense-category/{expense_id}','ExpenseCategoryController@UpdateCategory')->name('expense.category.update');
+Route::delete('delete-expense-category/{expense_id}','ExpenseCategoryController@DeleteCategory')->name('expense.category.delete');
+
+/*Expense Category  Route End here
+
+/*Expense  Route Start here
+
+@Author:Ruhin
+@Controller : ExpenseCategoryController
+@view:backend\exepnse
+*/
+
+Route::get('expense-list','ExpenseController@index')->name('expense.list');
+Route::post('store-expense','ExpenseController@storeExpense')->name('expense.store');
+Route::put('update-expense/{expense_id}','ExpenseController@UpdateExpense')->name('expense.update');
+Route::delete('delete-expense/{expense_id}','ExpenseController@DeleteExpense')->name('expense.delete');
+
+/*Expense   Route End here
+
+/*Patient Route Start here
+@Author:Ruhin 
+@controller : PatientController
+@view:backend\patient
+*/
