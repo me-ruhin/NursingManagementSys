@@ -258,7 +258,7 @@ class SaleController extends Controller
                 $custAccountHistory->invoice_no=$invoice_no;
                 $custAccountHistory->credit_amount=$request->total_amount- $dis_amount;
                 $custAccountHistory->debit_amount=$request->customer_pay?? 0;
-                $custAccountHistory->created_by=Auth::user()->name;
+                $custAccountHistory->created_by=Auth::user()->name??'Unknown';
                 $custAccountHistory->save();
                   /*Customer Account History  End here*/
 
@@ -279,11 +279,27 @@ class SaleController extends Controller
                   /*Discount Calculation section End here*/
 
                   Toastr::success('Your Product has been sold','Success');
-return redirect()->back();
-
-
-
-
+                return redirect()->back();
 
          }
+
+
+            public function allInvoiceList(Type $var = null)
+            {
+                 
+                $datas=SalesMaster::latest()->paginate(30);
+
+
+                return view('backend.invoice.invoice-list',compact('datas'));
+            }
+        
+
+
+        public function showCustomerInvoice($invoiceNo)
+        {   
+            $data=SalesMaster::where('invoice_no',$invoiceNo)->first();
+
+            return view('backend.invoice.invoice',compact('data'));
+        }
+
         }

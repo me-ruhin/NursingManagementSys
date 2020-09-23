@@ -120,7 +120,7 @@
 
 
                                         <li>
-                                            <a href="">Sales List</a>
+                                            <a href="{{ route('sales.list') }}">Sales List</a>
                                         </li>
 
                                     </ul>

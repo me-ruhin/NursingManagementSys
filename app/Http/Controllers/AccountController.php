@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Account;
+use App\Model\CustomerHistory;
+
 use Brian2694\Toastr\Facades\Toastr;
 class AccountController extends Controller
 {
      public function index( )
     {
             $datas=Account::latest()->paginate(10);
-
+ 
             return view('backend.account.index',compact('datas'));
 
     }
@@ -65,5 +67,7 @@ class AccountController extends Controller
 
     }
 
+
+   
 
 }

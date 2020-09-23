@@ -114,7 +114,10 @@
                                     </td>
 
                                     <td>
-                                       Blance
+                                        {{ ($item->accountInfo->sum('debit_amount') - $item->accountInfo->sum('credit_amount'))??0}} Tk
+
+                                        
+                                     
 
                                     </td>
 

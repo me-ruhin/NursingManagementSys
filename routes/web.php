@@ -17,18 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Auth::routes();
 
 Route::get('/user/dashboard', function () {
     return view('backend.index');
 })->name('admin.dashboard');
 
-
-
-
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 /*Member Registration Route Start heree
 
@@ -37,9 +32,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 @view:Auth\Register
 */
 
-
 Route::post('become/member','RegistrationController@register')->name('become.member');
-
 
 /*Userlist Route Start heree
 
@@ -50,23 +43,18 @@ Route::post('become/member','RegistrationController@register')->name('become.mem
 
 Route::get('user/profile','SettingsController@getUserList')->name('userlist');
 
-
-
 /*Nursing route Start here
     @Author:Ruhin Mia
     @controller: NurseController
     @view: backend/nurse
 */
+
 Route::get('customer/list','CustomerController@getCustomerList')->name('customerlist');
 Route::post('customer/store','CustomerController@storeCustomerInfo')->name('customer.store');
 
 
 Route::put('customer/update/{id}','CustomerController@update')->name('customer.update');
 Route::delete('customer/destroy/{id}','CustomerController@destroy')->name('customer.destroy');
-
-
-
-
 
 // profile Setting Route End Here
 
@@ -76,56 +64,51 @@ Route::delete('customer/destroy/{id}','CustomerController@destroy')->name('custo
     @view: backend/nurse
 */
 
-
 Route::resource('nurse','NurseController');
 Route::post('add/eduction/qualification','NurseController@addQutalification')->name('add.nurse.qualification');
 Route::post('add/nurse/reference','NurseController@addReferences')->name('add.nurse.reference');
-
-
-
 Route::post('add/job/experience','NurseController@addExpericence')->name('add.nurse.experience');
+Route::resource('product', 'ProductController');
+Route::get('sale-create','SaleController@index')->name('sale.create');
+Route::post('sale-add-cart','SaleController@CartProducts')->name('sale.add.cart');
+Route::get('invoice-list','SaleController@allInvoiceList')->name('sales.list');
 
- Route::resource('product', 'ProductController');
+// Customer Setting Route End Here
 
- Route::get('sale-create','SaleController@index')->name('sale.create');
- Route::post('sale-add-cart','SaleController@CartProducts')->name('sale.add.cart');
-
- // Customer Setting Route End Here
-
-
- /*Find the product Price */
+/*Find the product Price */
 
  Route::post('find/product/price','SaleController@findProductInfo');
-
-
-
  Route::post('product/sale','SaleController@saleProduct')->name('product.sale');
+/*Find the product Price End here*/
+ 
+/*Print Invoice Route Start here*/
+
+Route::get('customer/invoice/{invoice_no}','SaleController@showCustomerInvoice')->name('customer.invoice');
+
+/*End Route For invoice*/
 
  /*Account Routes Start here*/
 
+Route::get('account/lists','AccountController@index')->name('account.list');
+Route::post('account/store','AccountController@Store')->name('account.create');
+Route::put('account/update/{id}','AccountController@update')->name('account.update');
+Route::delete('account/delete/{id}','AccountController@destroy')->name('account.destroy');
+/*Individual Customer Account History*/
+Route::get('customer/account/{customer_id}','CustomerController@accountInformation')->name('account.details');
+/*Due Collect from Customer*/
 
- Route::get('account/lists','AccountController@index')->name('account.list');
- Route::post('account/store','AccountController@Store')->name('account.create');
- Route::put('account/update/{id}','AccountController@update')->name('account.update');
- Route::delete('account/delete/{id}','AccountController@destroy')->name('account.destroy');
+Route::post('customer/due/payment','CustomerController@customerDuePayment')->name('due.payment');
 
- /*Account Routes End here*/
+/*Account Routes End here*/
 
-
- /*Test Invoice Page Route*/
-
-
+/*Test Invoice Page Route*/
  
  Route::get('view/invoice',function(){
 
     return view('backend.invoice.invoice');
  });
 
-
- 
-
  /*Test Invoice Page Route End*/
-
 
  /*
     @Site settings Route 
@@ -138,8 +121,7 @@ Route::post('add/job/experience','NurseController@addExpericence')->name('add.nu
 Route::get('update/web-settings','WebsettingController@updateSiteInfo')->name('website.settings');
 Route::put('update/web-settings','WebsettingController@updateInfo')->name('website.settings.update');
 
-
- /*Site Settings Route End here*/
+/*Site Settings Route End here*/
 
 
 

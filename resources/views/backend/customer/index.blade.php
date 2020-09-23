@@ -1,7 +1,7 @@
 @extends('backend.app')
 @section('title',"All Customer's information")
 @push('css')
-
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 @endpush
 
 @section('content')
@@ -140,7 +140,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table table-centered table-nowrap table-striped" id="products-datatable">
+                        <table class="table table-centered table-nowrap table-striped" id="table_id">
                             <thead>
                                 <tr>
                                     <th>SL NO</th>
@@ -186,7 +186,7 @@
 
 
                                     <td>
-                                    {{-- <a href="{{route('client.edit',$item->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a> --}}
+                                    <a href="{{ route('account.details',$item->id) }}" class="btn btn-warning" href=" " class="action-icon"> <span>Accounts</span> </a>
 
 
 
@@ -334,6 +334,17 @@
 
 
 @push('js')
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+
+<script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+</script>
+  
+
 
     <script>
           function Delete(id){

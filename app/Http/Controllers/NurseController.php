@@ -26,7 +26,7 @@ class NurseController extends Controller
 
     public function index()
     {
-        $datas=Nurse::latest()->paginate(1);
+        $datas=Nurse::latest()->paginate(50);
         return view('backend.nurse.index',compact('datas'));
     }
 
@@ -153,9 +153,10 @@ class NurseController extends Controller
 
 
 
+            
             $checkQulafication=$request->exam_name;
 
-            if( $checkQulafication){
+            if( gettype($request->exam_name)=='array'){
 
                foreach($checkQulafication as $key=>$examValues){
                 $qualification_obj =new NurseQualification;
@@ -183,7 +184,8 @@ class NurseController extends Controller
             //   $output .= '<td >'.$request->endingDate.' <input type="hidden" name="exp_ending_date[]" value="'.$request->endingDate.'" />';
 
 
-            if( $request->org_name){
+           
+            if(gettype($request->org_name)=='array'){
 
                 foreach($request->org_name as $key=>$orgName){
 
@@ -313,7 +315,7 @@ class NurseController extends Controller
 
 
        $nurse_obj= Nurse::find($id)->update($nurseData);
-    //  dd($nurse_obj);
+    
 
 
     $nurseExtQualification=NurseQualification::where('nurse_id',$id)->get();
