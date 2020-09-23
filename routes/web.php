@@ -120,3 +120,26 @@ Route::post('add/job/experience','NurseController@addExpericence')->name('add.nu
 
     return view('backend.invoice.invoice');
  });
+
+
+ 
+
+ /*Test Invoice Page Route End*/
+
+
+ /*
+    @Site settings Route 
+    @Author:Ruhin Mia
+    @Controller : WebsettingController
+    @ View:backend/websettings
+
+ */
+
+Route::get('update/web-settings','WebsettingController@updateSiteInfo')->name('website.settings');
+Route::put('update/web-settings','WebsettingController@updateInfo')->name('website.settings.update');
+
+
+ /*Site Settings Route End here*/
+
+
+

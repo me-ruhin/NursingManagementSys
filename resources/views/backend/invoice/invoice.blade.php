@@ -17,9 +17,8 @@
                             <div class="col-12">
                                 <div class="page-title-box">
                                     <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Extras</a></li>
+                                        <ol class="breadcrumb m-0"> 
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Invoice</a></li>
                                             <li class="breadcrumb-item active">Invoice</li>
                                         </ol>
                                     </div>
@@ -38,7 +37,7 @@
                                             <div class="auth-logo">
                                                 <div class="logo logo-dark">
                                                     <span class="logo-lg">
-                                                        <img src="{{asset('backend/assets/images/logo-dark.png')}}" alt="" height="22">
+                                                        <img src="{{ asset('website/'.$site_info->logo) }}" alt="" height="22">
                                                     </span>
                                                 </div>
                             
@@ -57,10 +56,10 @@
                                         <div class="col-sm-4">
                                             <h6>Billing Address</h6>
                                             <address>
-                                                Stanley Jones<br>
-                                                795 Folsom Ave, Suite 600<br>
-                                                San Francisco, CA 94107<br>
-                                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                                                {{ $site_info->org_name }}<br>
+                                                {{ $site_info->address }}<br> 
+                                                <abbr title="Mobile">Mobile: {{ $site_info->mobile_no }}</abbr>  <br>
+                                                <abbr title="Phone">Phone: {{ $site_info->telephone_no }}</abbr> 
                                             </address>
                                         </div> <!-- end col -->
         

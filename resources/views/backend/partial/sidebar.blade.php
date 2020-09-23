@@ -174,10 +174,10 @@
                                         <li>
                                             <a href="{{ route('account.list') }}">Account Settings</a>
                                         </li>
-                                        {{-- <li>
-                                            <a href="task-details.html">Details</a>
+                                         <li>
+                                            <a href="{{ route('website.settings') }}">Web Settings</a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a href="task-kanban-board.html">Kanban Board</a>
                                         </li> --}}
                                     </ul>
