@@ -14,6 +14,12 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 class CustomerController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getCustomerList (){
 
         $datas=Customer::latest()->paginate(20);

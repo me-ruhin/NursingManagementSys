@@ -103,7 +103,7 @@
                                                     </tr></thead>
                                                     <tbody>
 
-                                                        @if(count($data->products)>0){
+                                                        @if(count($data->products)>0)
                                                         @foreach ($data->products as  $key=>$item)
 
                                                         <tr>

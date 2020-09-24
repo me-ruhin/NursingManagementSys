@@ -9,6 +9,12 @@ use App\Model\Websetting;
 use Brian2694\Toastr\Facades\Toastr;
 class WebsettingController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     
 
     public function updateSiteInfo()

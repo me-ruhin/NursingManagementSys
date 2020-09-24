@@ -16,11 +16,11 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Homepage</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Customer</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Client</a></li>
                         <li class="breadcrumb-item active">Client</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Customer List</h4>
+                <h4 class="page-title">Client List</h4>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
                         {{-- <a href=" " class="btn btn-danger waves-effect waves-light"> <i class="mdi mdi-plus-circle mr-1"></i>Add Client </a> --}}
 
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClient">
-                            <i class="mdi mdi-plus-circle mr-1"></i>Add Customer
+                            <i class="mdi mdi-plus-circle mr-1"></i>Add Client
                           </button>
 
 
@@ -47,7 +47,7 @@
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="addClient">Customer Information</h5>
+                    <h5 class="modal-title" id="addClient">Client Information</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -57,7 +57,7 @@
                         @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Customer Name <span style="color:red"> *<span></label>
+                            <label>Client Name <span style="color:red"> *<span></label>
                             <input type="text" class="form-control" data-toggle="input-mask" name="customer_name" id="customer_name"  placeholder="Customer Name" required>
                             {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
 
@@ -70,7 +70,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Customer Mobile <span style="color:red"> *<span></label>
+                            <label>Client Mobile <span style="color:red"> *<span></label>
                             <input type="text" class="form-control" data-toggle="input-mask" name="customer_mobile" id="customer_mobile"  placeholder="Customer Mobile" required>
                             {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
 
@@ -86,7 +86,7 @@
 
 
                         <div class="form-group">
-                            <label>Customer Email <span style="color:red"> *<span></label>
+                            <label>Client Email <span style="color:red"> *<span></label>
                             <input type="text" class="form-control" data-toggle="input-mask" name="customer_email" id="customer_email"  placeholder="Customer Email" required>
                             {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
 
@@ -101,7 +101,7 @@
 
 
                         <div class="form-group">
-                            <label>Customer Address <span style="color:red"> *<span></label>
+                            <label>Client Address <span style="color:red"> *<span></label>
                             <input type="text" class="form-control" data-toggle="input-mask" name="customer_address" id="customer_address"  placeholder="Customer Address" required>
                             {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
 

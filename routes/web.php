@@ -77,6 +77,7 @@ Route::get('invoice-list','SaleController@allInvoiceList')->name('sales.list');
 
 Route::post('find/product/price','SaleController@findProductInfo');
 Route::post('product/sale','SaleController@saleProduct')->name('product.sale');
+
 /*Find the product Price End here*/
 
 /*Print Invoice Route Start here*/
@@ -91,6 +92,7 @@ Route::get('account/lists','AccountController@index')->name('account.list');
 Route::post('account/store','AccountController@Store')->name('account.create');
 Route::put('account/update/{id}','AccountController@update')->name('account.update');
 Route::delete('account/delete/{id}','AccountController@destroy')->name('account.destroy');
+
 /*Individual Customer Account History*/
 Route::get('customer/account/{customer_id}','CustomerController@accountInformation')->name('account.details');
 /*Due Collect from Customer*/
@@ -147,10 +149,16 @@ Route::post('store-expense','ExpenseController@storeExpense')->name('expense.sto
 Route::put('update-expense/{expense_id}','ExpenseController@UpdateExpense')->name('expense.update');
 Route::delete('delete-expense/{expense_id}','ExpenseController@DeleteExpense')->name('expense.delete');
 
-/*Expense   Route End here
+/*Expense Route End here
 
 /*Patient Route Start here
 @Author:Ruhin 
 @controller : PatientController
 @view:backend\patient
+*/
+
+/*Salary Payment Route Start here
+@Author:Ruhin 
+@controller : SalaryController
+@view:backend\salary
 */

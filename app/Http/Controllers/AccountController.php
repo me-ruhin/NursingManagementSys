@@ -9,6 +9,11 @@ use App\Model\CustomerHistory;
 use Brian2694\Toastr\Facades\Toastr;
 class AccountController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
      public function index( )
     {
             $datas=Account::latest()->paginate(10);

@@ -63,13 +63,13 @@
                             <li>
                                 <a href="#sidebarCustomer" data-toggle="collapse">
                                     <i data-feather="user"></i>
-                                    <span> Customer </span>
+                                    <span> Client </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <div class="collapse" id="sidebarCustomer">
                                     <ul class="nav-second-level">
                                         <li>
-                                        <a href="{{route('customerlist')}}">Customer List</a>
+                                        <a href="{{route('customerlist')}}">Client List</a>
                                         </li>
 
 
@@ -109,18 +109,23 @@
                             <li>
                                 <a href="#product_section" data-toggle="collapse">
                                     <i data-feather="mail"></i>
-                                    <span> Sales </span>
+                                    <span> Service </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <div class="collapse" id="product_section">
                                     <ul class="nav-second-level">
                                         <li>
-                                        <a href="{{route('sale.create')}}">New  Sales</a>
+                                        <a href="{{route('sale.create')}}">Product Rent</a>
                                         </li>
 
 
                                         <li>
-                                            <a href="{{ route('sales.list') }}">Sales List</a>
+                                            <a href="{{ route('sales.list') }}">Product Rent List</a>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="{{ route('sales.list') }}">Call Service List</a>
                                         </li>
 
                                     </ul>
@@ -173,6 +178,10 @@
                                         <li>
                                             <a href="{{ route('expense.list') }}">Expense List</a>
                                         </li>
+
+                                        <li>
+                                            <a href="{{ route('expense.list') }}">Salary Payment List</a>
+                                        </li>
                                         {{-- <li>
                                             <a href="project-detail.html">Detail</a>
                                         </li>
@@ -183,26 +192,6 @@
                                 </div>
                             </li>
 
-                            <li>
-                                <a href="#sidebarTasks" data-toggle="collapse">
-                                    <i data-feather="clipboard"></i>
-                                    <span> Settings </span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <div class="collapse" id="sidebarTasks">
-                                    <ul class="nav-second-level">
-                                        <li>
-                                            <a href="{{ route('account.list') }}">Account Settings</a>
-                                        </li>
-                                         <li>
-                                            <a href="{{ route('website.settings') }}">Web Settings</a>
-                                        </li>
-                                        {{-- <li>
-                                            <a href="task-kanban-board.html">Kanban Board</a>
-                                        </li> --}}
-                                    </ul>
-                                </div>
-                            </li>
 
                             <li>
                                 <a href="#sidebarCharts" data-toggle="collapse">
@@ -242,6 +231,30 @@
                                     </ul>
                                 </div>
                             </li>
+
+
+                            
+                            <li>
+                                <a href="#sidebarTasks" data-toggle="collapse">
+                                    <i data-feather="clipboard"></i>
+                                    <span> Settings </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarTasks">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{ route('account.list') }}">Account Settings</a>
+                                        </li>
+                                         <li>
+                                            <a href="{{ route('website.settings') }}">Web Settings</a>
+                                        </li>
+                                        {{-- <li>
+                                            <a href="task-kanban-board.html">Kanban Board</a>
+                                        </li> --}}
+                                    </ul>
+                                </div>
+                            </li>
+
 {{-- 
                             <li>
                                 <a href="apps-file-manager.html">

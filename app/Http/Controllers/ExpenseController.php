@@ -11,6 +11,13 @@ use App\Model\AccountHistory;
 use Brian2694\Toastr\Facades\Toastr;
 class ExpenseController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
 
