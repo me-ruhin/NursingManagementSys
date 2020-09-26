@@ -66,6 +66,8 @@ Route::resource('nurse','NurseController');
 Route::post('add/eduction/qualification','NurseController@addQutalification')->name('add.nurse.qualification');
 Route::post('add/nurse/reference','NurseController@addReferences')->name('add.nurse.reference');
 Route::post('add/job/experience','NurseController@addExpericence')->name('add.nurse.experience');
+Route::get('download-cv/{id}','NurseController@downloadCv')->name('nurse.cv.download');
+
 Route::resource('product', 'ProductController');
 Route::get('sale-create','SaleController@index')->name('sale.create');
 Route::post('sale-add-cart','SaleController@CartProducts')->name('sale.add.cart');
@@ -157,8 +159,17 @@ Route::delete('delete-expense/{expense_id}','ExpenseController@DeleteExpense')->
 @view:backend\patient
 */
 
+Route::get('patient/list','PatientController@index')->name('patient.list');
+Route::post('patient/store','PatientController@store')->name('patient.store');
+Route::put('patient/update/{id}','PatientController@update')->name('patient.update');
+Route::get('patient/complete/{id}','PatientController@completedService')->name('patient.service.complete');
+Route::get('assing/nurse/project','PatientController@assignNurse')->name('assign.nurse');
+Route::put('assing/nurse/{id}','PatientController@updateAssignNurse')->name('patient.nurse.update');
+
 /*Salary Payment Route Start here
 @Author:Ruhin 
 @controller : SalaryController
 @view:backend\salary
 */
+
+

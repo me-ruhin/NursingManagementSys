@@ -9,6 +9,8 @@ use App\Model\Reference;
 use App\Model\NurseQualification;
 use Illuminate\Support\Facades\Storage;
 use Brian2694\Toastr\Facades\Toastr;
+use PDF;
+
 class NurseController extends Controller
 {
     /**
@@ -605,7 +607,19 @@ class NurseController extends Controller
 
 
         }
+    }
 
-
+    public function downloadCv($id)
+    {
+         
+    //    return view('backend.pdf.index');
+         $info=Nurse::find($id);
+         $education_info=NurseQualification::where('nurse_id',$id)->get();    
+         $nurseExtExp=NurseExperience::where('nurse_id',$id)->get();
+         $referral_info=Reference::where('nurse_id',$id)->get();
+         $data = ['info' => $info,'education_info'=>$education_info,'reference_info'=>$referral_info,'exp_info'=>$nurseExtExp];
+         $pdf = PDF::loadView('backend.pdf.index', $data);
+   
+          return $pdf->download(time().'.pdf');
     }
 }

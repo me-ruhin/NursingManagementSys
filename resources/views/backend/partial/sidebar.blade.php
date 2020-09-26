@@ -202,10 +202,10 @@
                                 <div class="collapse" id="sidebarCharts">
                                     <ul class="nav-second-level">
                                         <li>
-                                            <a href="#">Add Patient</a>
+                                            <a href="{{ route('patient.list') }}">Patients List</a>
                                         </li>
                                         <li>
-                                            <a href="#">Patients List</a>
+                                            <a href="{{ route('assign.nurse') }}">Assing Nurse</a>
                                         </li>
                                          
                                     </ul>
