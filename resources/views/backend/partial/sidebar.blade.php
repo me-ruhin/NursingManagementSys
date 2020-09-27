@@ -39,6 +39,11 @@
                                         <a href="{{route('nurse.index')}}">Nurse List</a>
                                         </li>
 
+                                        <li>
+                                            <a href="{{ route('nurse.list') }}">Working Report</a>
+                                        </li>
+
+
                                         {{-- <li>
                                             <a href="#">Nurse List</a>
                                         </li> --}}
@@ -179,9 +184,7 @@
                                             <a href="{{ route('expense.list') }}">Expense List</a>
                                         </li>
 
-                                        <li>
-                                            <a href="{{ route('expense.list') }}">Salary Payment List</a>
-                                        </li>
+                                      
                                         {{-- <li>
                                             <a href="project-detail.html">Detail</a>
                                         </li>

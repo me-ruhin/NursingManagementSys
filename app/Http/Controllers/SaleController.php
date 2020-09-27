@@ -220,8 +220,7 @@ class SaleController extends Controller
 
                           /*Account History Start here*/
 
-                          $accountHistory=new AccountHistory;
-
+                           $accountHistory=new AccountHistory;
                            $accountHistory->date=$date;
                            $accountHistory->month=$month;
                            $accountHistory->account_id=$request->pay_method; 

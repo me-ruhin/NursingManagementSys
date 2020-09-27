@@ -7,6 +7,8 @@ use App\Model\Nurse;
 use App\Model\NurseExperience;
 use App\Model\Reference;
 use App\Model\NurseQualification;
+use App\Model\NurseHistory;
+
 use Illuminate\Support\Facades\Storage;
 use Brian2694\Toastr\Facades\Toastr;
 use PDF;
@@ -621,5 +623,21 @@ class NurseController extends Controller
          $pdf = PDF::loadView('backend.pdf.index', $data);
    
           return $pdf->download(time().'.pdf');
+    }
+
+
+    public function nurseWorkingHistory(Request $request){
+
+     
+ 
+        $month=$request->month."-".$request->year;
+
+
+        
+        $datas=NurseHistory::with('patient')->where(['nurse_id'=>$request->nurse_id,'month'=>$month])->get();
+        $salary=NurseHistory::with('patient')->where(['nurse_id'=>$request->nurse_id,'month'=>$month])->sum('amount');
+
+
+        return view('backend.history.nurse_working_record',compact('datas','salary'));
     }
 }

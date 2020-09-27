@@ -173,14 +173,15 @@
 
 
 
-                                            <a href="" class="btn btn-info">History</a>
+                                            <a href="{{ route('nurse.history',$item->id) }}" class="btn btn-info">History</a>
 
-                                        <button type="submit" onclick="Delete({{$item->id}})" class="btn btn-danger">  <span class="fe-check" title="Project Complete"></span>   </button>
+                                        <button type="submit" onclick="Delete({{$item->id}})" class="btn btn-danger">  <span class="fe-check" title="Present"></span> Attendance  </button>
 
-                                            <form action={{ route('patient.service.complete',$item->id) }} }}POST" id="action-form-{{$item->id}}">
+                                            <form action="{{ route('nurse.attendance',$item->id) }}" id="action-form-{{$item->id}}" method="POST">
 
                                                     @csrf
-                                                    @method('delete')
+                                                   
+                                                    <input type="hidden" name="nurse_id" value="{{ $item->assign_nurse_id }}">
 
                                             </form>
 
@@ -234,7 +235,7 @@
                               showCancelButton: true,
                               confirmButtonColor: '#3085d6',
                               cancelButtonColor: '#d33',
-                              confirmButtonText: 'Yes, Complete it!'
+                              confirmButtonText: 'Yes, Take Attendance!'
                             }).then((result) => {
                               if (result.value) {
 

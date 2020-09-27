@@ -365,7 +365,7 @@
 
 
                                     <td>
-                                    <a href="{{ route('account.details',$item->id) }}" class="btn btn-warning" href=" " class="action-icon"> <span>Accounts</span> </a>
+                                    <a href="{{ route('patient.account.details',$item->id) }}" class="btn btn-warning" href=" " class="action-icon"> <span>Accounts</span> </a>
 
 
 
@@ -630,7 +630,7 @@
 
 
 
-
+                                            <a href="{{ route('nurse.history',$item->id) }}" class="btn btn-info">History</a>
 
                                         <button type="submit" onclick="Delete({{$item->id}})" class="btn btn-danger">  <span class="fe-check" title="Project Complete"></span>   </button>
 

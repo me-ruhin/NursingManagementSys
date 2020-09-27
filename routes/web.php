@@ -166,6 +166,20 @@ Route::get('patient/complete/{id}','PatientController@completedService')->name('
 Route::get('assing/nurse/project','PatientController@assignNurse')->name('assign.nurse');
 Route::put('assing/nurse/{id}','PatientController@updateAssignNurse')->name('patient.nurse.update');
 
+/*Patient individual Accounts info*/
+Route::get('patient/account/{patient_id}','PatientController@accountInformation')->name('patient.account.details');
+
+/*Due Payment*/
+Route::post('patient/due/payment','PatientController@patientDuePayment')->name('patient.due.payment');
+
+/*Nurse Attendance*/
+Route::post('nurse/attendance/{id}','PatientController@nurseAttendance')->name('nurse.attendance');
+
+/*Nurse Working History*/
+Route::get('nurse/working/history/{id}','PatientController@nurseWorkingHistory')->name('nurse.history');
+
+
+
 /*Salary Payment Route Start here
 @Author:Ruhin 
 @controller : SalaryController
@@ -173,3 +187,6 @@ Route::put('assing/nurse/{id}','PatientController@updateAssignNurse')->name('pat
 */
 
 
+Route::get('nurse-list','SalaryController@index')->name('nurse.list');
+
+Route::post('nurse/working/history','NurseController@nurseWorkingHistory')->name('nurse.working.history');
