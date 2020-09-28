@@ -188,5 +188,8 @@ Route::get('nurse/working/history/{id}','PatientController@nurseWorkingHistory')
 
 
 Route::get('nurse-list','SalaryController@index')->name('nurse.list');
+Route::get('nurse-payment','SalaryController@payment')->name('nurse.list.payment');
+Route::post('nurse-payment','SalaryController@paymentStore')->name('nurse.slary.payment');
+
 
 Route::post('nurse/working/history','NurseController@nurseWorkingHistory')->name('nurse.working.history');

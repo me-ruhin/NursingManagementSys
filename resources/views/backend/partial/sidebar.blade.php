@@ -184,6 +184,17 @@
                                             <a href="{{ route('expense.list') }}">Expense List</a>
                                         </li>
 
+
+                                        <li>
+                                            <a href="{{ route('nurse.list.payment') }}">Salary Payment</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ route('expense.list') }}">Salary Payment List</a>
+                                        </li>
+
+
+
                                       
                                         {{-- <li>
                                             <a href="project-detail.html">Detail</a>
