@@ -62,8 +62,8 @@
                                                 $lastMonth=date('F-Y', strtotime('last month'));
                                                 
 
-                                                $currentMonthWorkingDays=\App\Model\NurseHistory::where('month',$Currentmonth)->get();
-                                                $LastMonthWorkingDays=\App\Model\NurseHistory::where('month',$lastMonth)->get();
+                                                $currentMonthWorkingDays=\App\Model\NurseHistory::where(['month'=>$Currentmonth,'nurse_id'=>$item->id])->get();
+                                                $LastMonthWorkingDays=\App\Model\NurseHistory::where(['month'=>$lastMonth,'nurse_id'=>$item->id])->get();
 
                                     @endphp
                                 <tr>

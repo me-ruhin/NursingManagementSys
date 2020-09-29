@@ -96,7 +96,7 @@
                                     </td>
 
                                     <td>
-                                         <a href="{{route('nurse.cv.download',$item->id)}}"> <i class="fe-arrow-down"></i>CV</a>
+                                         <a href="{{route('nurse.cv.download',$item->id)}}"> <i class="dripicons-download"></i> CV</a>
                                     <a href="{{route('nurse.edit',$item->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
 									
 									 

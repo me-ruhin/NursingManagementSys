@@ -130,7 +130,7 @@
 
 
                                         <li>
-                                            <a href="{{ route('sales.list') }}">Call Service List</a>
+                                            <a href="{{ route('call.service.list') }}">Call Service List</a>
                                         </li>
 
                                     </ul>
@@ -190,7 +190,7 @@
                                         </li>
 
                                         <li>
-                                            <a href="{{ route('expense.list') }}">Salary Payment List</a>
+                                            <a href="{{ route('nurse.slary.payment.history') }}">Salary Payment List</a>
                                         </li>
 
 
@@ -227,24 +227,37 @@
                             </li>
 
 
-                           
                             <li>
-                                <a href="#sidebarTickets" data-toggle="collapse">
-                                    <i data-feather="aperture"></i>
-                                    <span> Reports Section </span>
+                                <a href="#ReportSection" data-toggle="collapse">
+                                    <i data-feather="clipboard"></i>
+                                    <span> Reports  </span>
                                     <span class="menu-arrow"></span>
                                 </a>
-                                <div class="collapse" id="sidebarTickets">
+                                <div class="collapse" id="ReportSection">
                                     <ul class="nav-second-level">
                                         <li>
-                                            <a href="tickets-list.html">List</a>
+                                            <a href="{{ route('expense.report') }}">Total Expense</a>
+                                        </li>
+                                         <li>
+                                            <a href="{{ route('website.settings') }}">Total Profit</a>
                                         </li>
                                         <li>
-                                            <a href="tickets-detail.html">Detail</a>
+                                            <a href="{{ route('website.settings') }}">Net Profit</a>
                                         </li>
+
+                                        <li>
+                                            <a href="{{ route('account.list') }}">Expense by Category</a>
+                                        </li>
+                                       
+                                        <li>
+                                            <a href="{{ route('account.list') }}">Income by Category</a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </li>
+
+                          
 
 
                             

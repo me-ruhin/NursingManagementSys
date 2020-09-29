@@ -190,6 +190,21 @@ Route::get('nurse/working/history/{id}','PatientController@nurseWorkingHistory')
 Route::get('nurse-list','SalaryController@index')->name('nurse.list');
 Route::get('nurse-payment','SalaryController@payment')->name('nurse.list.payment');
 Route::post('nurse-payment','SalaryController@paymentStore')->name('nurse.slary.payment');
-
-
+Route::get('nurse-payment-list','SalaryController@paymentHistory')->name('nurse.slary.payment.history');
 Route::post('nurse/working/history','NurseController@nurseWorkingHistory')->name('nurse.working.history');
+
+
+
+/*Call Service  Route Start here
+@Author:Ruhin 
+@controller : CallServiceController
+@view:backend\call_service
+*/
+
+Route::get('call-service-list','CallServiceController@index')->name('call.service.list');
+Route::post('call-service-store','CallServiceController@ServiceStore')->name('call.service.store');
+
+ /*Report Controller*/
+
+Route::get('expense-report','ReportController@totalExpense')->name('expense.report');
+Route::post('expense-reportBy-Category','ReportController@ExpenseReportByCategory')->name('expense.report.category');

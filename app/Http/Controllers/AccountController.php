@@ -25,7 +25,7 @@ class AccountController extends Controller
      public function Store(Request $request)
     {
         $request->validate([
-            'account_name'=>'required'
+            'account_name'=>'required|unique:accounts'
         ]);
 
         Account::create($request->all());
