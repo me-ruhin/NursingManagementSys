@@ -141,6 +141,7 @@ class CustomerController extends Controller
         $incomeObj->date=$date;
         $incomeObj->month=$month;
         $incomeObj->notation="Income from  payment";
+        $incomeObj->category_name="customer_payment"; 
         $incomeObj->amount=$request->pay_amount??0 ;
         $incomeObj->save();
 

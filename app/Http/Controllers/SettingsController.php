@@ -15,6 +15,6 @@ class SettingsController extends Controller
   
   public function getUserList(){
 
-    return view('admin.profile.index');
+     
   }
 }

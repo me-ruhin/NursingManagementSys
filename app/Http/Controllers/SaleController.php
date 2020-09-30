@@ -236,6 +236,7 @@ class SaleController extends Controller
                             $incomeObj->date=$date;
                             $incomeObj->month=$month;
                             $incomeObj->notation="Income from  Sale";
+                            $incomeObj->category_name="sale";
                             $incomeObj->amount=$request->customer_pay??0 ;
                             $incomeObj->save();
     

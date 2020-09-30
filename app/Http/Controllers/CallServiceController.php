@@ -14,6 +14,11 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class CallServiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $accounts=Account::latest()->get();
@@ -78,6 +83,8 @@ class CallServiceController extends Controller
         $incomeObj->date=$date;
         $incomeObj->month=$month;
         $incomeObj->notation="Income from  Oncall Service";
+        $incomeObj->category_name="call_service";
+        
         $incomeObj->amount=$request->amount??0 ;
         $incomeObj->save();
 

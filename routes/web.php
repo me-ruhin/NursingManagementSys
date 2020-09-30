@@ -19,9 +19,7 @@ return view('welcome');
 
 Auth::routes();
 
-Route::get('/user/dashboard', function () {
-return view('backend.index');
-})->name('admin.dashboard');
+Route::get('/user/dashboard', 'HomeController@index')->name('admin.dashboard');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -205,6 +203,17 @@ Route::get('call-service-list','CallServiceController@index')->name('call.servic
 Route::post('call-service-store','CallServiceController@ServiceStore')->name('call.service.store');
 
  /*Report Controller*/
-
+//Expnese report
 Route::get('expense-report','ReportController@totalExpense')->name('expense.report');
 Route::post('expense-reportBy-Category','ReportController@ExpenseReportByCategory')->name('expense.report.category');
+
+//Income report
+
+Route::get('income-report','ReportController@totalIncome')->name('income.report');
+Route::post('income-reportBy-Category','ReportController@incomeReportByCategory')->name('income.report.category');
+
+
+//Net Profit report
+
+Route::get('net-profit-report','ReportController@netProfit')->name('profit.report');
+Route::post('profit-reportBy-Date','ReportController@profitReportByDate')->name('profit.report.date');

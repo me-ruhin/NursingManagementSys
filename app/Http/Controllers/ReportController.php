@@ -7,6 +7,7 @@ use App\Model\ExpenseList;
 use App\Model\Discount;
 use App\Model\NurseSalary;
 use App\Model\ExpenseCategory;
+use App\Model\Income;
 
 
 
@@ -30,7 +31,7 @@ class ReportController extends Controller
 
     public function ExpenseReportByCategory(Request $request){
 
-        // dd($request->expense_category);
+        // dd($request->start_date);
 
 
         if($request->expense_category=="salaries"){
@@ -74,4 +75,74 @@ class ReportController extends Controller
 
             } 
     }
+
+
+
+    public function totalIncome(){
+
+        $datas=Income::latest()->get();
+        $total_income=Income::sum('amount');
+      
+        return view('backend.report.income',compact('datas','total_income'));
+
+    }
+
+    public function incomeReportByCategory(Request $request){
+
+        $request->validate([
+
+            'income_category'=>'required',
+            'start_date'=>'required',
+            'end_date'=>'required',
+        ]);
+
+        $categoryName=$request->income_category;
+        $startDate=$request->start_date;
+        $endDate=$request->end_date;
+
+        if($categoryName=='all_categories'){
+            $datas=Income:: whereBetween('date', [$startDate, $endDate])->latest()->get();
+            $total_income=Income::whereBetween('date', [$startDate, $endDate])->sum('amount');            
+         return view('backend.report.income',compact('datas','total_income'));
+
+        }else{
+
+            $datas=Income::where('category_name',$categoryName)->whereBetween('date', [$startDate, $endDate])->latest()->get();
+            $total_income=Income::where('category_name',$categoryName)->whereBetween('date', [$startDate, $endDate])->sum('amount');            
+         return view('backend.report.income',compact('datas','total_income'));
+
+        }
+
+    }
+
+
+    public function netProfit(){
+
+       
+        $expense=ExpenseList::sum('expense_amount');
+        $discount_amount=Discount::sum('discount_amount');      
+        $total_salary=NurseSalary::sum('salary');
+        $totalExpense= $expense+$discount_amount+  $total_salary ;       
+        $total_income=Income::sum('amount');
+        $net_profit=$total_income-$totalExpense;
+        return view('backend.report.netprofit',compact('totalExpense','total_income','expense','discount_amount','total_salary','net_profit'));
+
+    }
+
+
+    public function profitReportByDate(Request $request){
+
+        $expense=ExpenseList::whereBetween('date', [$request->start_date, $request->end_date])->sum('expense_amount');
+        $discount_amount=Discount::whereBetween('date', [$request->start_date, $request->end_date])->sum('discount_amount');      
+        $total_salary=NurseSalary::whereBetween('date', [$request->start_date, $request->end_date])->sum('salary');
+        $totalExpense= $expense+$discount_amount+  $total_salary ;       
+        $total_income=Income::whereBetween('date', [$request->start_date, $request->end_date])->sum('amount');
+
+        $net_profit=$total_income-$totalExpense;
+        return view('backend.report.netprofit',compact('totalExpense','total_income','expense','discount_amount','total_salary','net_profit'));
+
+
+    }
+
+
 }

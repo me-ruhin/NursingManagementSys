@@ -239,19 +239,12 @@
                                             <a href="{{ route('expense.report') }}">Total Expense</a>
                                         </li>
                                          <li>
-                                            <a href="{{ route('website.settings') }}">Total Profit</a>
+                                            <a href="{{ route('income.report') }}">Total Profit</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('website.settings') }}">Net Profit</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="{{ route('account.list') }}">Expense by Category</a>
+                                            <a href="{{ route('profit.report') }}">Net Profit</a>
                                         </li>
                                        
-                                        <li>
-                                            <a href="{{ route('account.list') }}">Income by Category</a>
-                                        </li>
 
                                     </ul>
                                 </div>
