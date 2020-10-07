@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Model\Slider;
 use App\Model\Service;
-
+use Illuminate\Support\Str;
 use Brian2694\Toastr\Facades\Toastr;
 class ServiceController extends Controller
 {
@@ -55,7 +55,9 @@ class ServiceController extends Controller
             $table->text('service_front_image');
             $table->text('service_image');
         */
-        $service->service_title=$request->service_title;
+        $service->slug=Str::slug($request->service_title);;
+        $service->service_title=$request->service_title; 
+
         $service->service_details=$request->service_details;
         $service->service_front_image=$thumbImageName;
         $service->service_image=$mainImageName;
