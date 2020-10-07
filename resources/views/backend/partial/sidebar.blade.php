@@ -268,9 +268,15 @@
                                          <li>
                                             <a href="{{ route('website.settings') }}">Web Settings</a>
                                         </li>
-                                        {{-- <li>
-                                            <a href="task-kanban-board.html">Kanban Board</a>
-                                        </li> --}}
+                                        <li>
+                                            <a href="{{ route('slider.list') }}">Slider Settings</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ route('service.list') }}">Service Settings</a>
+                                        </li>
+
+                                       
                                     </ul>
                                 </div>
                             </li>

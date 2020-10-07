@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-return view('welcome');
+return view('frontend.index');
 });
 
 Auth::routes();
@@ -217,3 +217,19 @@ Route::post('income-reportBy-Category','ReportController@incomeReportByCategory'
 
 Route::get('net-profit-report','ReportController@netProfit')->name('profit.report');
 Route::post('profit-reportBy-Date','ReportController@profitReportByDate')->name('profit.report.date');
+
+
+/*website Slider Settings*/
+
+Route::get('slider-list','SliderController@index')->name('slider.list');
+Route::post('slider-store','SliderController@store')->name('slider.store');
+Route::put('slider-update/{id}','SliderController@update')->name('slider.update');
+Route::delete('slider-delete/{id}','SliderController@destroy')->name('slider.destroy');
+
+
+/*website Service Settings*/
+
+Route::get('service-list','ServiceController@index')->name('service.list');
+Route::post('service-store','ServiceController@store')->name('service.store');
+Route::put('service-update/{id}','ServiceController@update')->name('service.update');
+Route::delete('service-delete/{id}','ServiceController@destroy')->name('service.destroy');
