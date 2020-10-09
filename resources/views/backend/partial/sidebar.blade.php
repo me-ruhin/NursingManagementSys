@@ -276,10 +276,72 @@
                                             <a href="{{ route('service.list') }}">Service Settings</a>
                                         </li>
 
-                                       
+                                        <li>
+                                            <a href="{{ route('team.list') }}">Our Team</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ route('manpower.list') }}">Man Power</a>
+                                        </li>
+                                        
+
+                                        <li>
+                                            <a href="{{ route('client.list') }}">Happy Client Lists</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ route('site.common.info') }}">Basic Settings</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ route('site.common.info') }}">Basic Settings</a>
+                                        </li>
+                                        
+                                        
+                                    </ul>
+                                </div>
+
+
+                            </li>
+
+
+                            <li>
+                                <a href="#sidebarExtendedui" data-toggle="collapse">
+                                    <i data-feather="layers"></i>                                    
+                                    <span> Users Section </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarExtendedui">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{ route('user.list') }}">User List</a>
+                                        </li>
+
+                                        {{-- <li>
+                                            <a href="extended-range-slider.html">Range Slider</a>
+                                        </li>
+                                        <li>
+                                            <a href="extended-dragula.html">Dragula</a>
+                                        </li>
+                                        <li>
+                                            <a href="extended-animation.html">Animation</a>
+                                        </li>
+                                        <li>
+                                            <a href="extended-sweet-alert.html">Sweet Alert</a>
+                                        </li>
+                                        <li>
+                                            <a href="extended-tour.html">Tour Page</a>
+                                        </li>
+                                        <li>
+                                            <a href="extended-scrollspy.html">Scrollspy</a>
+                                        </li>
+                                        <li>
+                                            <a href="extended-loading-buttons.html">Loading Buttons</a>
+                                        </li> --}}
                                     </ul>
                                 </div>
                             </li>
+
 
 {{-- 
                             <li>

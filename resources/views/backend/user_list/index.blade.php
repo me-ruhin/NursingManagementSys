@@ -1,5 +1,5 @@
 @extends('backend.app')
-@section('title',"All Service information")
+@section('title',"All Sliders information")
 @push('css')
 
 @endpush
@@ -16,10 +16,11 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Homepage</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Service</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Slider</a></li>
+                        <li class="breadcrumb-item active">Settings</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Service List</h4>
+                <h4 class="page-title">Slider List</h4>
             </div>
         </div>
     </div>
@@ -37,7 +38,7 @@
                         {{-- <a href=" " class="btn btn-danger waves-effect waves-light"> <i class="mdi mdi-plus-circle mr-1"></i>Add Client </a> --}}
 
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClient">
-                            <i class="mdi mdi-plus-circle mr-1"></i>Add Service
+                            <i class="mdi mdi-plus-circle mr-1"></i>Add Slider
                           </button>
 
 
@@ -46,21 +47,21 @@
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="addClient">Service's Information</h5>
+                    <h5 class="modal-title" id="addClient">Slider's Information</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
-                <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('slider.store')}}" method="post" enctype="multipart/form-data">
 
                         @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Service Title <span style="color:red"> *<span></label>
-                            <input type="text" class="form-control" data-toggle="input-mask" name="service_title" id="image_title"  placeholder="Service Title" required>
+                            <label>Slider Name <span style="color:red"> *<span></label>
+                            <input type="text" class="form-control" data-toggle="input-mask" name="image_title" id="image_title"  placeholder="Image Name" required>
                             {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
 
-                            @error('service_title')
+                            @error('image_title')
                                 <div class="alert alert-danger" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </div>
@@ -68,36 +69,16 @@
 
                         </div>
 
-                       
                         <div class="form-group">
-                            <label>Thumb Image <span style="color:red">(300 X 160) *<span></label>
-                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_front_image" id="thumb_image"   required>
+                            <label>Slider Image <span style="color:red">(1920 X 810) *<span></label>
+                            <input type="file" class="form-control" data-toggle="input-mask" name="slider_image" id="slider_image"   required>
                             
-                            @error('service_front_image')
+                            @error('image_title')
                                 <div class="alert alert-danger" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </div>
                             @enderror
 
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <label>Desciption Image <span style="color:red"> (700 X 380)*<span></label>
-                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_image" id="slider_image"   required>
-                            
-                            @error('service_image')
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @enderror
-
-                        </div>
-
-                        <div class="form-group">
-                                <label><strong>Description :</strong></label>
-                                <textarea   class="ckeditor form-control" name="service_details" require></textarea>
                         </div>
 
 
@@ -124,8 +105,7 @@
                             <thead>
                                 <tr>
                                     <th>SL NO</th>
-                                    <th>Thumb Image</th>
-                                    <th>Main Image</th>
+                                    <th>Image</th>
                                     <th style="width: 85px;">Action</th>
                                 </tr>
                             </thead>
@@ -141,18 +121,9 @@
 
                                     <td>
                                     
-                                        <img src="{{asset('service/'.$item->service_front_image)}}" height="100" width="100" alt="{{$item->image_title}}"/>
+                                        <img src="{{asset('slider/'.$item->image_name)}}" height="100" width="250" alt="{{$item->image_title}}"/>
 
                                     </td>
-
-                                    <td>
-                                    
-                                        <img src="{{asset('service/'.$item->service_image)}}" height="100" width="250" alt="{{$item->image_title}}"/>
-
-                                    </td>
-
-                                  
-
 
                                   
 
@@ -178,14 +149,14 @@
                                                     </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{route('service.update',$item->id)}}" method="post" enctype="multipart/form-data">
+                                                        <form action="{{route('slider.update',$item->id)}}" method="post" enctype="multipart/form-data">
                                                             @method('PUT')
                                                             @csrf
                                                             <div class="modal-body">
                                                              
                                                             <div class="form-group">
-                            <label>Service Title <span style="color:red"> *<span></label>
-                            <input type="text" class="form-control" data-toggle="input-mask" value="{{$item->service_title}}" name="service_title" id="image_title"  placeholder="Service Title" required>
+                            <label>Slider Name <span style="color:red"> *<span></label>
+                            <input type="text" class="form-control" data-toggle="input-mask" value="{{$item->image_title}}" name="image_title" id="image_title"  placeholder="Image Name" required>
                             {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
 
                             @error('image_title')
@@ -196,10 +167,9 @@
 
                         </div>
 
-
                         <div class="form-group">
-                            <label>Thumb Image <span style="color:red">(300 X 160) *<span></label>
-                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_front_image" id="service_front_image"    >
+                            <label>Slider Image <span style="color:red"> *<span></label>
+                            <input type="file" class="form-control"   data-toggle="input-mask" name="slider_image" id="slider_image"   required>
                             
                             @error('image_title')
                                 <div class="alert alert-danger" role="alert">
@@ -211,25 +181,8 @@
 
 
 
-                        <div class="form-group">
-                            <label>Desciption Image <span style="color:red"> (700 X 380)*<span></label>
-                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_image" id="slider_image"    >
-                            
-                            @error('image_title')
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @enderror
 
-                        </div>
-
-
-                        <div class="form-group">
-                                <label><strong>Description :</strong></label>
-                                <textarea   class="ckeditor form-control" name="service_details" require>{{ $item->service_details}}</textarea>
-                        </div>
-
-                            </div>
+                                                            </div>
 
                                                         <div class="modal-footer">
                                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -248,7 +201,7 @@
 
                                         <button type="submit" onclick="Delete({{$item->id}})" class="btn btn-danger"> <i class="mdi mdi-delete"><span></span></i>  </button>
 
-                                            <form action="{{route('service.destroy',$item->id)}}" method="POST" id="action-form-{{$item->id}}">
+                                            <form action="{{route('slider.destroy',$item->id)}}" method="POST" id="action-form-{{$item->id}}">
 
                                                     @csrf
                                                     @method('delete')
@@ -286,13 +239,6 @@
 
 
 @push('js')
-<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-       $('#ckeditor').ckeditor();
-    });
-</script>
-  
 
     <script>
           function Delete(id){

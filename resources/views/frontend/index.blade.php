@@ -5,25 +5,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nursing | Website</title>
         <!-- favicon -->
-        <link rel="icon" href="{{asset('frontend/assets//images/favicon/favicon.png')}}">
+        <link rel="icon" href="{{asset('frontend/assets/images/favicon/favicon.png')}}">
         <!-- font awesome css -->
-        <link rel="stylesheet" href="{{asset('frontend/assets//css/all.min.css')}}">
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/all.min.css')}}">
         <!-- bootstrap css -->
-        <link rel="stylesheet" href="{{asset('frontend/assets//css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
         <!-- fonts -->
-        <link rel="stylesheet" href="{{asset('frontend/assets//css/roboto-stylesheet.css')}}">
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/roboto-stylesheet.css')}}">
         <!-- carousel -->
-        <link rel="stylesheet" href="{{asset('frontend/assets//css/owl.theme.default.min.css')}}">
-        <link rel="stylesheet" href="{{asset('frontend/assets//css/owl.carousel.min.css')}}">
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/owl.theme.default.min.css')}}">
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/owl.carousel.min.css')}}">
         <!-- slick slider css -->
-        <link rel="stylesheet" href="{{asset('frontend/assets//css/slickslick.css')}}">
-        <link rel="stylesheet" href="{{asset('frontend/assets//css/slick-theme.css')}}">
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/slickslick.css')}}">
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/slick-theme.css')}}">
         <!-- hover css -->
-        <link rel="stylesheet" href="{{asset('frontend/assets//css/hover-min.css')}}">
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/hover-min.css')}}">
         <!-- main css -->
-        <link rel="stylesheet" href="{{asset('frontend/assets//css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}">
         <!-- responsive css -->
-        <link rel="stylesheet" href="{{asset('frontend/assets//css/responsive.css')}}">
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/responsive.css')}}">
     </head>
     <body>
         <!-- =================================START HEADER SECTION   ========================================= -->        
@@ -36,6 +36,7 @@
                             <!-- logo -->
                             <div class="header-logo">
                                 <a href="index.html"><img class="logo-size " src="{{asset('frontend/assets/images/logo/logo-retina-1.png')}}" alt="header logo"></a>
+                            </div>
                             <!-- address -->
                        </div>
                        <div class="col-xl-5 col-lg-5 col-md-5 text-center">
@@ -117,7 +118,7 @@
            </div>
             <nav class="navbar navbar-light bg-light navbar-expand-lg">
                 <div class="container">
-                    <a class="navbar-brand" href="index.html"><img class="logo-size " src="{{asset('frontend/assets//images/logo/logo-retina-1.png')}}" alt=""></a>
+                    <a class="navbar-brand" href="index.html"><img class="logo-size " src="{{asset('frontend/assets/images/logo/logo-retina-1.png')}}" alt=""></a>
 
                     <button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#myNav">
                         <span class="navbar-toggler-icon"></span>
@@ -148,23 +149,23 @@
             <div class="home-slick-slider">
                 <!-- slider item -->
                 <div>
-                    <img class="w-100" src="{{asset('frontend/assets//images/slider/1.jpg')}}" alt="first slider image">
+                    <img class="w-100" src="{{asset('frontend/assets/images/slider/1.jpg')}}" alt="first slider image">
                 </div>
                 <!-- slider item -->
                 <div>
-                    <img class="w-100" src="{{asset('frontend/assets//images/slider/2.jpg')}}" alt="second slider image">
+                    <img class="w-100" src="{{asset('frontend/assets/images/slider/2.jpg')}}" alt="second slider image">
                 </div>
                 <!-- slider item -->
                 <div>
-                    <img class="w-100" src="{{asset('frontend/assets//images/slider/3.jpg')}}" alt="third slider image">
+                    <img class="w-100" src="{{asset('frontend/assets/images/slider/3.jpg')}}" alt="third slider image">
                 </div>
                 <!-- slider item -->
                 <div>
-                    <img class="w-100" src="{{asset('frontend/assets//images/slider/1.jpg')}}" alt="fourth slider image">
+                    <img class="w-100" src="{{asset('frontend/assets/images/slider/1.jpg')}}" alt="fourth slider image">
                 </div>
                 <!-- slider item -->
                 <div>
-                    <img class="w-100" src="{{asset('frontend/assets//images/slider/2.jpg')}}" alt="fourth slider image">
+                    <img class="w-100" src="{{asset('frontend/assets/images/slider/2.jpg')}}" alt="fourth slider image">
                 </div>
             </div>
         </section>
@@ -191,7 +192,7 @@
                                 <div class="card-body">
                                     <h4 class="text-center">Baby Nursing Care</h4>
                                         <div class="card-image">
-                                            <img class="w-100" src="{{asset('frontend/assets//images/services/1.jpg')}}" alt="">
+                                            <img class="w-100" src="{{asset('frontend/assets/images/services/1.jpg')}}" alt="">
                                             <div class="single-service-inner">
                                                 <a href="service-details.html"><i class="fas fa-link"></i></a>
                                             </div>
@@ -208,7 +209,7 @@
                                 <div class="card-body">
                                     <h4 class="text-center">Home Nursing Care</h4>
                                         <div class="card-image">
-                                            <img class="w-100" src="{{asset('frontend/assets//images/services/2.jpg')}}" alt="">
+                                            <img class="w-100" src="{{asset('frontend/assets/images/services/2.jpg')}}" alt="">
                                             <div class="single-service-inner">
                                                 <a href="service-details.html"><i class="fas fa-link"></i></a>
                                             </div>
@@ -225,7 +226,7 @@
                                 <div class="card-body">
                                     <h4 class="text-center">Newborn Care</h4>
                                         <div class="card-image">
-                                            <img class="w-100" src="{{asset('frontend/assets//images/services/3.jpg')}}" alt="">
+                                            <img class="w-100" src="{{asset('frontend/assets/images/services/3.jpg')}}" alt="">
                                             <div class="single-service-inner">
                                                 <a href="service-details.html"><i class="fas fa-link"></i></a>
                                             </div>
@@ -242,7 +243,7 @@
                                 <div class="card-body">
                                     <h4 class="text-center">On-Demand Nursing Services</h4>
                                         <div class="card-image">
-                                            <img class="w-100" src="{{asset('frontend/assets//images/services/service-1.jpg')}}" alt="">
+                                            <img class="w-100" src="{{asset('frontend/assets/images/services/service-1.jpg')}}" alt="">
                                             <div class="single-service-inner">
                                                 <a href="service-details.html"><i class="fas fa-link"></i></a>
                                             </div>
@@ -259,7 +260,7 @@
                                 <div class="card-body">
                                     <h4 class="text-center">Care Giver Support</h4>
                                         <div class="card-image">
-                                            <img class="w-100" src="{{asset('frontend/assets//images/services/service-2.jpg')}}" alt="">
+                                            <img class="w-100" src="{{asset('frontend/assets/images/services/service-2.jpg')}}" alt="">
                                             <div class="single-service-inner">
                                                 <a href="service-details.html"><i class="fas fa-link"></i></a>
                                             </div>
@@ -276,7 +277,7 @@
                                 <div class="card-body">
                                     <h4 class="text-center">Rehabilitation Services</h4>
                                         <div class="card-image">
-                                            <img class="w-100" src="{{asset('frontend/assets//images/services/service-3.jpg')}}" alt="">
+                                            <img class="w-100" src="{{asset('frontend/assets/images/services/service-3.jpg')}}" alt="">
                                             <div class="single-service-inner">
                                                 <a href="service-details.html"><i class="fas fa-link"></i></a>
                                             </div>
@@ -311,7 +312,7 @@
                     <div class="col-xl-12 text-center">
                         <div class="our-team-single-item">
                             <div class="card">
-                                <img class="w-100" src="{{asset('frontend/assets//images/team/team-1.jpg')}}" alt="">
+                                <img class="w-100" src="{{asset('frontend/assets/images/team/team-1.jpg')}}" alt="">
                                 <div class="card-body">
                                    <h4>David Parker</h4>
                                    <small>Chief Executive Officer</small>
@@ -329,7 +330,7 @@
                     <div class="col-xl-12 text-center">
                         <div class="our-team-single-item">
                             <div class="card">
-                                <img class="w-100" src="{{asset('frontend/assets//images/team/team-2.jpg')}}" alt="">
+                                <img class="w-100" src="{{asset('frontend/assets/images/team/team-2.jpg')}}" alt="">
                                 <div class="card-body">
                                    <h4>David Parker</h4>
                                    <small>Chief Executive Officer</small>
@@ -347,7 +348,7 @@
                     <div class="col-xl-12 text-center">
                         <div class="our-team-single-item">
                             <div class="card">
-                                <img class="w-100" src="{{asset('frontend/assets//images/team/team-3.jpg')}}" alt="">
+                                <img class="w-100" src="{{asset('frontend/assets/images/team/team-3.jpg')}}" alt="">
                                 <div class="card-body">
                                    <h4>David Parker</h4>
                                    <small>Chief Executive Officer</small>
@@ -365,7 +366,7 @@
                     <div class="col-xl-12 text-center">
                         <div class="our-team-single-item">
                             <div class="card">
-                                <img class="w-100" src="{{asset('frontend/assets//images/team/team-4.jpg')}}" alt="">
+                                <img class="w-100" src="{{asset('frontend/assets/images/team/team-4.jpg')}}" alt="">
                                 <div class="card-body">
                                    <h4>David Parker</h4>
                                    <small>Chief Executive Officer</small>
@@ -383,7 +384,7 @@
                     <div class="col-xl-12 text-center">
                         <div class="our-team-single-item">
                             <div class="card">
-                                <img class="w-100" src="{{asset('frontend/assets//images/team/team-5.jpg')}}" alt="">
+                                <img class="w-100" src="{{asset('frontend/assets/images/team/team-5.jpg')}}" alt="">
                                 <div class="card-body">
                                    <h4>David Parker</h4>
                                    <small>Chief Executive Officer</small>
@@ -422,7 +423,7 @@
                             <div class="card-body">
                                 <h4 class="text-center">Baby Nursing Care</h4>
                                     <div class="card-image">
-                                        <img class="w-100" src="{{asset('frontend/assets//images/services/1.jpg')}}" alt="">
+                                        <img class="w-100" src="{{asset('frontend/assets/images/services/1.jpg')}}" alt="">
                                         <div class="single-service-inner">
                                             <a href="service-details.html"><i class="fas fa-link"></i></a>
                                         </div>
@@ -439,7 +440,7 @@
                             <div class="card-body">
                                 <h4 class="text-center">Home Nursing Care</h4>
                                     <div class="card-image">
-                                        <img class="w-100" src="{{asset('frontend/assets//images/services/2.jpg')}}" alt="">
+                                        <img class="w-100" src="{{asset('frontend/assets/images/services/2.jpg')}}" alt="">
                                         <div class="single-service-inner">
                                             <a href="service-details.html"><i class="fas fa-link"></i></a>
                                         </div>
@@ -456,7 +457,7 @@
                             <div class="card-body">
                                 <h4 class="text-center">Newborn Care</h4>
                                     <div class="card-image">
-                                        <img class="w-100" src="{{asset('frontend/assets//images/services/3.jpg')}}" alt="">
+                                        <img class="w-100" src="{{asset('frontend/assets/images/services/3.jpg')}}" alt="">
                                         <div class="single-service-inner">
                                             <a href="service-details.html"><i class="fas fa-link"></i></a>
                                         </div>
@@ -473,7 +474,7 @@
                             <div class="card-body">
                                 <h4 class="text-center">On-Demand Nursing Services</h4>
                                     <div class="card-image">
-                                        <img class="w-100" src="{{asset('frontend/assets//images/services/service-1.jpg')}}" alt="">
+                                        <img class="w-100" src="{{asset('frontend/assets/images/services/service-1.jpg')}}" alt="">
                                         <div class="single-service-inner">
                                             <a href="service-details.html"><i class="fas fa-link"></i></a>
                                         </div>
@@ -490,7 +491,7 @@
                             <div class="card-body">
                                 <h4 class="text-center">Care Giver Support</h4>
                                     <div class="card-image">
-                                        <img class="w-100" src="{{asset('frontend/assets//images/services/service-2.jpg')}}" alt="">
+                                        <img class="w-100" src="{{asset('frontend/assets/images/services/service-2.jpg')}}" alt="">
                                         <div class="single-service-inner">
                                             <a href="service-details.html"><i class="fas fa-link"></i></a>
                                         </div>
@@ -507,7 +508,7 @@
                             <div class="card-body">
                                 <h4 class="text-center">Rehabilitation Services</h4>
                                     <div class="card-image">
-                                        <img class="w-100" src="{{asset('frontend/assets//images/services/service-3.jpg')}}" alt="">
+                                        <img class="w-100" src="{{asset('frontend/assets/images/services/service-3.jpg')}}" alt="">
                                         <div class="single-service-inner">
                                             <a href="service-details.html"><i class="fas fa-link"></i></a>
                                         </div>
@@ -531,7 +532,7 @@
                     <!-- for mobile device -->
                      <div class="d-col-xl-6 col-lg-6 col-md-12 d-block d-lg-none mb-5">
                         <div class="happy-client-right mb-4">
-                            <img class="w-100" src="{{asset('frontend/assets//images/happy-client/right/office-400x314.jpg')}}" alt="">
+                            <img class="w-100" src="{{asset('frontend/assets/images/happy-client/right/office-400x314.jpg')}}" alt="">
                         </div>
                     </div>
                     <!-- for mobile device -->
@@ -553,7 +554,7 @@
                                                 <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear.</p>
                                                 <div class="member-info d-flex">
                                                     <div class="member-img mr-2">
-                                                        <img src="{{asset('frontend/assets//images/happy-client/left/team-3.jpg')}}" alt="">
+                                                        <img src="{{asset('frontend/assets/images/happy-client/left/team-3.jpg')}}" alt="">
                                                     </div>
                                                     <div class="member-details">
                                                         <h5>Mr. Ruhin Mia</h5>
@@ -572,7 +573,7 @@
                                                 <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear.</p>
                                                 <div class="member-info d-flex">
                                                     <div class="member-img mr-2">
-                                                        <img src="{{asset('frontend/assets//images/happy-client/left/client2.jpg')}}" alt="">
+                                                        <img src="{{asset('frontend/assets/images/happy-client/left/client2.jpg')}}" alt="">
                                                     </div>
                                                     <div class="member-details">
                                                         <h5>Mr. Ruhin Mia</h5>
@@ -589,7 +590,7 @@
                     <!-- ourt team left -->
                     <div class="col-xl-6 col-lg-6  d-none d-lg-block ">
                         <div class="happy-client-right ">
-                            <img class="w-100" src="{{asset('frontend/assets//images/happy-client/right/office-400x314.jpg')}}" alt="">
+                            <img class="w-100" src="{{asset('frontend/assets/images/happy-client/right/office-400x314.jpg')}}" alt="">
                         </div>
                     </div>
                 </div>
@@ -602,7 +603,7 @@
        <div class="caller-row">
             <div class="call-item">
                 <div class="call-circle">
-                    <img src="{{asset('frontend/assets//images/call/call-girl.png')}}" alt="call girl">
+                    <img src="{{asset('frontend/assets/images/call/call-girl.png')}}" alt="call girl">
                 </div>
                 <div class="call-number">
                     <a href="tel:+880 170 0000 000">+880 170 0000 000</a>
@@ -619,7 +620,7 @@
                 <div class="container">
                     <div class="row pb-5">
                         <div class="col-lg-4 col-md-6  mt-lg-block part-about">
-                            <a href="index.html"><img class="footer-logo-size " src="{{asset('frontend/assets//images/logo/logo-retina-1.png')}}" alt="header logo"></a>
+                            <a href="index.html"><img class="footer-logo-size " src="{{asset('frontend/assets/images/logo/logo-retina-1.png')}}" alt="header logo"></a>
                             <p class=" ">Founded At 2011. Architecting secure, efficient and user-friendly items by writing codes to turn ideas into reality. Working on a daily basis to bring unique, standard and trendy product for various marketplace and clients.</p>
                         </div>
 
@@ -696,16 +697,16 @@
 
         <!--==================================== all js link============================================ ========-->
         <!-- js link -->
-        <script src="{{asset('frontend/assets//js/jquery.min.js')}}"></script>
+        <script src="{{asset('frontend/assets/js/jquery.min.js')}}"></script>
         <!-- bootstrap js -->
-        <script src="{{asset('frontend/assets//js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('frontend/assets/js/bootstrap.bundle.min.js')}}"></script>
         <!-- fixed navbar -->
-        <script src="{{asset('frontend/assets//js/navbar-fixed.js')}}"></script>
+        <script src="{{asset('frontend/assets/js/navbar-fixed.js')}}"></script>
         <!-- slick slider js -->
-        <script src="{{asset('frontend/assets//js/slick.min.js')}}"></script>
+        <script src="{{asset('frontend/assets/js/slick.min.js')}}"></script>
         <!-- carousel -->
-        <script src="{{asset('frontend/assets//js/owl.carousel.min.js')}}"></script>
+        <script src="{{asset('frontend/assets/js/owl.carousel.min.js')}}"></script>
         <!-- main js -->
-        <script src="{{asset('frontend/assets//js/script.js')}}"></script>
+        <script src="{{asset('frontend/assets/js/script.js')}}"></script>
     <body>
 </html>

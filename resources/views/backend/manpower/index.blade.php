@@ -1,5 +1,5 @@
 @extends('backend.app')
-@section('title',"All Service information")
+@section('title',"All Manpower information")
 @push('css')
 
 @endpush
@@ -16,10 +16,10 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Homepage</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Service</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Manpower</a></li>
                     </ol>
                 </div>
-                <h4 class="page-title">Service List</h4>
+                <h4 class="page-title">Manpower List</h4>
             </div>
         </div>
     </div>
@@ -37,7 +37,7 @@
                         {{-- <a href=" " class="btn btn-danger waves-effect waves-light"> <i class="mdi mdi-plus-circle mr-1"></i>Add Client </a> --}}
 
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClient">
-                            <i class="mdi mdi-plus-circle mr-1"></i>Add Service
+                            <i class="mdi mdi-plus-circle mr-1"></i>Add Man power 
                           </button>
 
 
@@ -46,17 +46,17 @@
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="addClient">Service's Information</h5>
+                    <h5 class="modal-title" id="addClient">Man power's Information</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
-                <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('manpower.store')}}" method="post" enctype="multipart/form-data">
 
                         @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Service Title <span style="color:red"> *<span></label>
+                            <label>Manpower Title <span style="color:red"> *<span></label>
                             <input type="text" class="form-control" data-toggle="input-mask" name="service_title" id="image_title"  placeholder="Service Title" required>
                             {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
 
@@ -141,13 +141,13 @@
 
                                     <td>
                                     
-                                        <img src="{{asset('service/'.$item->service_front_image)}}" height="100" width="100" alt="{{$item->image_title}}"/>
+                                        <img src="{{asset('manpower/'.$item->service_front_image)}}" height="100" width="100" alt="{{$item->image_title}}"/>
 
                                     </td>
 
                                     <td>
                                     
-                                        <img src="{{asset('service/'.$item->service_image)}}" height="100" width="250" alt="{{$item->image_title}}"/>
+                                        <img src="{{asset('manpower/'.$item->service_image)}}" height="100" width="250" alt="{{$item->image_title}}"/>
 
                                     </td>
 
@@ -178,7 +178,7 @@
                                                     </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{route('service.update',$item->id)}}" method="post" enctype="multipart/form-data">
+                                                        <form action="{{route('manpower.update',$item->id)}}" method="post" enctype="multipart/form-data">
                                                             @method('PUT')
                                                             @csrf
                                                             <div class="modal-body">
@@ -199,7 +199,7 @@
 
                         <div class="form-group">
                             <label>Thumb Image <span style="color:red">(300 X 160) *<span></label>
-                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_front_image" id="service_front_image"    >
+                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_front_image" id="service_front_image"   >
                             
                             @error('image_title')
                                 <div class="alert alert-danger" role="alert">
@@ -213,7 +213,7 @@
 
                         <div class="form-group">
                             <label>Desciption Image <span style="color:red"> (700 X 380)*<span></label>
-                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_image" id="slider_image"    >
+                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_image" id="slider_image"   >
                             
                             @error('image_title')
                                 <div class="alert alert-danger" role="alert">
@@ -248,7 +248,7 @@
 
                                         <button type="submit" onclick="Delete({{$item->id}})" class="btn btn-danger"> <i class="mdi mdi-delete"><span></span></i>  </button>
 
-                                            <form action="{{route('service.destroy',$item->id)}}" method="POST" id="action-form-{{$item->id}}">
+                                            <form action="{{route('manpower.destroy',$item->id)}}" method="POST" id="action-form-{{$item->id}}">
 
                                                     @csrf
                                                     @method('delete')

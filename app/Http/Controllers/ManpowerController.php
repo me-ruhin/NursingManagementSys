@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Service;
+use App\Model\OurManPower;
 use Illuminate\Support\Str;
 use Brian2694\Toastr\Facades\Toastr;
-class ServiceController extends Controller
+class ManpowerController extends Controller
 {
     public function index(){
 
-        $datas=Service::latest()->paginate(100);
+        $datas=OurManPower::latest()->paginate(100);
 
-        return view('backend.service.index',compact('datas'));
+        return view('backend.manpower.index',compact('datas'));
 
     }
 
@@ -32,7 +32,7 @@ class ServiceController extends Controller
 
             $imageName=mt_rand()."_".time();
             $thumbImageName = $imageName."_".$thumbImage->getClientOriginalName(); 
-            $thumbImage->move(public_path('service'), $thumbImageName);
+            $thumbImage->move(public_path('manpower'), $thumbImageName);
         }
 
         if($request->hasFile('service_image')){
@@ -41,10 +41,10 @@ class ServiceController extends Controller
 
             $imageName=mt_rand()."_".time();
             $mainImageName = $imageName."_".$mainImage->getClientOriginalName(); 
-            $mainImage->move(public_path('service'), $mainImageName);
+            $mainImage->move(public_path('manpower'), $mainImageName);
         }
 
-        $service=new Service;
+        $service=new OurManPower;
 
 
         /*
@@ -61,13 +61,13 @@ class ServiceController extends Controller
         $service->service_image=$mainImageName;
         $service->save();
 
-        Toastr::success('Service has been has been Added',"success");
+        Toastr::success('ManPower has been has been Added',"success");
 
-        return redirect()->route('service.list');
+        return redirect()->route('manpower.list');
     }
     public function update(Request $request,$id){
 
-        $service=Service::find($id);
+        $service=OurManPower::find($id);
 
 
         $request->validate([
@@ -78,25 +78,25 @@ class ServiceController extends Controller
 
         if($request->hasFile('service_front_image')){
             if($service->service_front_image){
-                unlink('service/'.$service->service_front_image);
+                unlink('manpower/'.$service->service_front_image);
                  }
             $thumbImage=$request->service_front_image;
 
             $imageName=mt_rand()."_".time();
             $thumbImageName = $imageName."_".$thumbImage->getClientOriginalName(); 
-            $thumbImage->move(public_path('service'), $thumbImageName);
+            $thumbImage->move(public_path('manpower'), $thumbImageName);
         }
 
         if($request->hasFile('service_image')){
             if($service->service_image){
-                unlink('service/'. $service->service_image);
+                unlink('manpower/'. $service->service_image);
                  }
 
             $mainImage=$request->service_image;
 
             $imageName=mt_rand()."_".time();
             $mainImageName = $imageName."_".$mainImage->getClientOriginalName(); 
-            $mainImage->move(public_path('service'), $mainImageName);
+            $mainImage->move(public_path('manpower'), $mainImageName);
         }
         $service->service_title=$request->service_title;
         $service->service_details=$request->service_details;
@@ -104,30 +104,30 @@ class ServiceController extends Controller
         $service->service_image=$mainImageName??$service->service_image;
         $service->save();
 
-        Toastr::info('Service has been has been Updated',"Updated");
+        Toastr::info('ManPower has been has been Updated',"Updated");
 
-        return redirect()->route('service.list');
+        return redirect()->route('manpower.list');
 
     }
 
 
     public function destroy($id){
 
-        $service=Service::find($id);
+        $service=OurManPower::find($id);
 
         if($service->service_front_image){
-            unlink('service/'.$service->service_front_image);
+            unlink('manpower/'.$service->service_front_image);
              }
         
         if($service->service_image){
-            unlink('service/'. $service->service_image);
+            unlink('manpower/'. $service->service_image);
              }
         
         $service->delete();
 
-        Toastr::warning('Service has been Deleted',"Deleted");
+        Toastr::warning('ManPower has been Deleted',"Deleted");
 
-        return redirect()->route('service.list');
+        return redirect()->route('manpower.list');
 
     }
 }

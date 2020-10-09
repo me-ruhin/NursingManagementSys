@@ -1,5 +1,5 @@
 @extends('backend.app')
-@section('title',"All Service information")
+@section('title',"All Client information")
 @push('css')
 
 @endpush
@@ -16,10 +16,10 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Homepage</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Service</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Client</a></li>
                     </ol>
                 </div>
-                <h4 class="page-title">Service List</h4>
+                <h4 class="page-title">Client List</h4>
             </div>
         </div>
     </div>
@@ -37,7 +37,7 @@
                         {{-- <a href=" " class="btn btn-danger waves-effect waves-light"> <i class="mdi mdi-plus-circle mr-1"></i>Add Client </a> --}}
 
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClient">
-                            <i class="mdi mdi-plus-circle mr-1"></i>Add Service
+                            <i class="mdi mdi-plus-circle mr-1"></i>Add Client
                           </button>
 
 
@@ -46,18 +46,31 @@
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="addClient">Service's Information</h5>
+                    <h5 class="modal-title" id="addClient">Client's Information</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
-                <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('client.store')}}" method="post" enctype="multipart/form-data">
 
                         @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Service Title <span style="color:red"> *<span></label>
-                            <input type="text" class="form-control" data-toggle="input-mask" name="service_title" id="image_title"  placeholder="Service Title" required>
+                            <label>Client Name <span style="color:red"> *<span></label>
+                            <input type="text" class="form-control" data-toggle="input-mask" name="client_name" id="client_name"  placeholder="Client Name" required>
+                            {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
+
+                            @error('service_title')
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @enderror
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Client Designation <span style="color:red"> *<span></label>
+                            <input type="text" class="form-control" data-toggle="input-mask" name="client_designation" id="client_designation"  placeholder="Client Designation" required>
                             {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
 
                             @error('service_title')
@@ -69,23 +82,13 @@
                         </div>
 
                        
-                        <div class="form-group">
-                            <label>Thumb Image <span style="color:red">(300 X 160) *<span></label>
-                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_front_image" id="thumb_image"   required>
-                            
-                            @error('service_front_image')
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @enderror
-
-                        </div>
+                         
 
 
 
                         <div class="form-group">
-                            <label>Desciption Image <span style="color:red"> (700 X 380)*<span></label>
-                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_image" id="slider_image"   required>
+                            <label>Image <span style="color:red"> (60 X 60)*<span></label>
+                            <input type="file" class="form-control"   data-toggle="input-mask" name="client_image" id="client_image"   required>
                             
                             @error('service_image')
                                 <div class="alert alert-danger" role="alert">
@@ -97,7 +100,7 @@
 
                         <div class="form-group">
                                 <label><strong>Description :</strong></label>
-                                <textarea   class="ckeditor form-control" name="service_details" require></textarea>
+                                <textarea   class="ckeditor form-control" name="client_notation" require></textarea>
                         </div>
 
 
@@ -124,8 +127,9 @@
                             <thead>
                                 <tr>
                                     <th>SL NO</th>
-                                    <th>Thumb Image</th>
-                                    <th>Main Image</th>
+                                    <th>Name </th>
+                                    <th>Designation</th>
+                                    <th>Image</th>
                                     <th style="width: 85px;">Action</th>
                                 </tr>
                             </thead>
@@ -141,15 +145,22 @@
 
                                     <td>
                                     
-                                        <img src="{{asset('service/'.$item->service_front_image)}}" height="100" width="100" alt="{{$item->image_title}}"/>
+                                         {{ $item->client_name }}
 
                                     </td>
 
                                     <td>
                                     
-                                        <img src="{{asset('service/'.$item->service_image)}}" height="100" width="250" alt="{{$item->image_title}}"/>
+                                        {{ $item->client_designation }}
 
-                                    </td>
+                                   </td>
+
+
+                                    <td>
+                                    
+                                        <img src="{{asset('client/'.$item->client_image)}}" height="60" width="60" alt="{{$item->image_title}}"/>
+
+                                    </td>                                 
 
                                   
 
@@ -178,58 +189,61 @@
                                                     </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{route('service.update',$item->id)}}" method="post" enctype="multipart/form-data">
+                                                        <form action="{{route('client.update',$item->id)}}" method="post" enctype="multipart/form-data">
                                                             @method('PUT')
                                                             @csrf
                                                             <div class="modal-body">
-                                                             
-                                                            <div class="form-group">
-                            <label>Service Title <span style="color:red"> *<span></label>
-                            <input type="text" class="form-control" data-toggle="input-mask" value="{{$item->service_title}}" name="service_title" id="image_title"  placeholder="Service Title" required>
-                            {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
-
-                            @error('image_title')
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @enderror
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>Thumb Image <span style="color:red">(300 X 160) *<span></label>
-                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_front_image" id="service_front_image"    >
-                            
-                            @error('image_title')
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @enderror
-
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <label>Desciption Image <span style="color:red"> (700 X 380)*<span></label>
-                            <input type="file" class="form-control"   data-toggle="input-mask" name="service_image" id="slider_image"    >
-                            
-                            @error('image_title')
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @enderror
-
-                        </div>
-
-
-                        <div class="form-group">
-                                <label><strong>Description :</strong></label>
-                                <textarea   class="ckeditor form-control" name="service_details" require>{{ $item->service_details}}</textarea>
-                        </div>
-
-                            </div>
+                                                                <div class="form-group">
+                                                                    <label>Client Name <span style="color:red"> *<span></label>
+                                                                    <input type="text" class="form-control" data-toggle="input-mask" name="client_name" id="client_name" value="{{ $item->client_name }}" placeholder="Client Name" required>
+                                                                    {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
+                                        
+                                                                    @error('service_title')
+                                                                        <div class="alert alert-danger" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </div>
+                                                                    @enderror
+                                        
+                                                                </div>
+                                        
+                                                                <div class="form-group">
+                                                                    <label>Client Designation <span style="color:red"> *<span></label>
+                                                                    <input type="text" class="form-control" data-toggle="input-mask" name="client_designation" id="client_designation" value="{{ $item->client_designation }}" placeholder="Client Designation" >
+                                                                    {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
+                                        
+                                                                    @error('service_title')
+                                                                        <div class="alert alert-danger" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </div>
+                                                                    @enderror
+                                        
+                                                                </div>
+                                        
+                                                               
+                                                                 
+                                        
+                                        
+                                        
+                                                                <div class="form-group">
+                                                                    <label>Image <span style="color:red"> (60 X 60)*<span></label>
+                                                                    <input type="file" class="form-control"   data-toggle="input-mask" name="client_image" id="client_image">
+                                                                    
+                                                                    @error('service_image')
+                                                                        <div class="alert alert-danger" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </div>
+                                                                    @enderror
+                                        
+                                                                </div>
+                                        
+                                                                <div class="form-group">
+                                                                        <label><strong>Description :</strong></label>
+                                                                        <textarea   class="ckeditor form-control" name="client_notation" require>{{ $item->client_notation }}</textarea>
+                                                                </div>
+                                        
+                                        
+                                        
+                                                            </div>
 
                                                         <div class="modal-footer">
                                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -248,7 +262,7 @@
 
                                         <button type="submit" onclick="Delete({{$item->id}})" class="btn btn-danger"> <i class="mdi mdi-delete"><span></span></i>  </button>
 
-                                            <form action="{{route('service.destroy',$item->id)}}" method="POST" id="action-form-{{$item->id}}">
+                                            <form action="{{route('client.destroy',$item->id)}}" method="POST" id="action-form-{{$item->id}}">
 
                                                     @csrf
                                                     @method('delete')

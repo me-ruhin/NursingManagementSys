@@ -233,3 +233,29 @@ Route::get('service-list','ServiceController@index')->name('service.list');
 Route::post('service-store','ServiceController@store')->name('service.store');
 Route::put('service-update/{id}','ServiceController@update')->name('service.update');
 Route::delete('service-delete/{id}','ServiceController@destroy')->name('service.destroy');
+
+/* Website Team Settings*/
+Route::get('team-list','TeamController@index')->name('team.list');
+Route::post('team-store','TeamController@store')->name('team.store');
+Route::put('team-update/{id}','TeamController@update')->name('team.update');
+Route::delete('team-delete/{id}','TeamController@destroy')->name('team.destroy');
+
+/*Man Power Settings*/
+Route::get('manpower-list','ManpowerController@index')->name('manpower.list');
+Route::post('manpower-store','ManpowerController@store')->name('manpower.store');
+Route::put('manpower-update/{id}','ManpowerController@update')->name('manpower.update');
+Route::delete('manpower-delete/{id}','ManpowerController@destroy')->name('manpower.destroy');
+
+/*Client Certification */
+
+Route::get('client-list','ClientController@index')->name('client.list');
+Route::post('client-store','ClientController@store')->name('client.store');
+Route::put('client-update/{id}','ClientController@update')->name('client.update');
+Route::delete('client-delete/{id}','ClientController@destroy')->name('client.destroy');
+
+/*Basic Setting About us , contact us, Socila Media*/
+
+
+Route::get('/edit/common-info','SettingsController@editinfo')->name('site.common.info');
+Route::post('/update/common-info','SettingsController@updateInfo')->name('site.info.update');
+Route::get('/user-list','SettingsController@getUserList')->name('user.list');
