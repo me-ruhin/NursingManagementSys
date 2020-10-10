@@ -107,7 +107,7 @@
 
                            
                                 <div class="form-group">
-                                    <label>Logo </label> <span><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#previewimage">Preview
+                                    <label>Logo (150 X 40 PX)</label> <span><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#previewimage">Preview
                                       </button> </span>
                                     <input type="file" class="form-control" data-toggle="input-mask"  id="logo" name="logo" >
                                     {{-- <span style="color:red;display: none" id="error_nurse_photo">Photo field is Required</span> --}}

@@ -9,6 +9,9 @@ use App\Model\Nurse;
 use App\Model\AccountHistory;
 use App\Model\NurseHistory;
 use App\Model\Income;
+use App\Model\CylenderRequest;
+use App\Model\Customer;
+
 
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -102,7 +105,29 @@ class CallServiceController extends Controller
 
         return redirect()->back();
 
+    }
 
 
+
+    public function RequestServiceList(){
+        
+        $accounts=Account::latest()->get();
+        $nurses=Nurse::latest()->get();
+        $datas=CylenderRequest::latest('id')->paginate(100);
+        return view('backend.request_service.index',compact('datas','accounts','nurses'));
+        
+    }
+
+    public function acceptCustomerService($id){
+        
+        $data=CylenderRequest::find($id);
+        $data->checked_status="Checked";
+        $data->save();
+ 
+        Customer::create(['customer_name'=>$data->customer_name,'customer_mobile'=>$data->customer_mobile,'customer_email'=>$data->customer_email,'customer_address'=>$data->customer_address]);
+
+        Toastr::success('Customer Account  has been Created',"Created");
+
+            return redirect()->route('customerlist');
     }
 }

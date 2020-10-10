@@ -132,6 +132,9 @@
                                         <li>
                                             <a href="{{ route('call.service.list') }}">Call Service List</a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('request.service.list') }}">Request Service</a>
+                                        </li>
 
                                     </ul>
                                 </div>
@@ -293,9 +296,9 @@
                                             <a href="{{ route('site.common.info') }}">Basic Settings</a>
                                         </li>
 
-                                        <li>
+                                        {{-- <li>
                                             <a href="{{ route('site.common.info') }}">Basic Settings</a>
-                                        </li>
+                                        </li> --}}
                                         
                                         
                                     </ul>

@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Model\Service;
+use App\Model\Team;
+use App\Model\OurManPower;
+use App\Model\Client;
+use App\Model\Slider;
+use App\Model\CommonConfig;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +21,77 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-return view('frontend.index');
-});
+    $datas=[];
+    $datas['services']=Service::latest()->take(6)->get();
+    $datas['sliders']=Slider::latest('id')->get();
+    $datas['teams']=Team::latest('id','ASC')->get();
+    $datas['manpowers']=OurManPower::latest()->take(6)->get();
+    $datas['clients']=Client::latest()->get();
+return view('frontend.index',$datas);
+})->name('homepage');
 
+/*Single Service  Route start here*/
+Route::get('service/{slug}',function($slug){
+
+    $data['service']=Service::where('slug',$slug)->first();
+    $data['services']=Service::latest()->get();
+    return view('frontend.service_details',$data);
+})->name('service.details');
+
+/*Single Service  Route End here*/
+
+Route::get('service/manpoqwr/{slug}',function($slug){
+
+})->name('manpower.details');
+
+/*About us Route start here*/
+
+Route::get('/about-us', function () {
+    $datas=[];  
+    $datas['teams']=Team::latest('id','ASC')->get();
+    $datas['about_info']=CommonConfig::latest()->first();
+return view('frontend.aboutus',$datas);
+})->name('aboutus');
+
+/*About us Route start here*/
+/*Service  us Route start here*/
+Route::get('/services', function () {
+    $datas=[];  
+    $datas['services']=Service::latest()->get();
+return view('frontend.service',$datas);
+})->name('service');
+/*Service Route start here*/
+
+
+
+/*Contact us Route start here*/
+Route::get('/contact-us', function () {
+    $datas=[];  
+    $datas['about_info']=CommonConfig::latest()->first();
+return view('frontend.contactus',$datas);
+})->name('contact_us');
+/*Contact us Route End here*/
+
+/*nurse us Route start here*/
+Route::get('/nurse-service', function () {
+     return view('frontend.nurse_booking');
+})->name('nurse.service');
+/*nurse service us Route End here*/
+
+/*Cylender Rent Service Route start here*/
+Route::get('/cylinder-service', function () {
+    return view('frontend.cylender_rent');
+})->name('cylinder.service');
+/*Cylender Rent Service Route End here*/
+
+ 
+
+Route::post('cylinder/rent/service','FrontendController@cylenderRequest')->name('cylinder.rent.service');
+
+Route::post('nurse/service','FrontendController@getNurseService')->name('registration.nurse.service');
 Auth::routes();
+
+// Route::get('/', 'FrontendController@homepage');
 
 Route::get('/user/dashboard', 'HomeController@index')->name('admin.dashboard');
 
@@ -202,6 +276,9 @@ Route::post('nurse/working/history','NurseController@nurseWorkingHistory')->name
 Route::get('call-service-list','CallServiceController@index')->name('call.service.list');
 Route::post('call-service-store','CallServiceController@ServiceStore')->name('call.service.store');
 
+Route::get('request-service-list','CallServiceController@RequestServiceList')->name('request.service.list');
+
+Route::post('accept/customer/request/{id}','CallServiceController@acceptCustomerService')->name('service.accept');
  /*Report Controller*/
 //Expnese report
 Route::get('expense-report','ReportController@totalExpense')->name('expense.report');
@@ -259,3 +336,5 @@ Route::delete('client-delete/{id}','ClientController@destroy')->name('client.des
 Route::get('/edit/common-info','SettingsController@editinfo')->name('site.common.info');
 Route::post('/update/common-info','SettingsController@updateInfo')->name('site.info.update');
 Route::get('/user-list','SettingsController@getUserList')->name('user.list');
+
+ 

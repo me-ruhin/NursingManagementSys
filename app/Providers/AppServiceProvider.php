@@ -10,6 +10,7 @@ use App\Model\Discount;
 use App\Model\NurseSalary;
 use App\Model\ExpenseCategory;
 use App\Model\Income;
+use App\Model\CommonConfig;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $site_info=Websetting::latest()->first();
+
+        $about_info=CommonConfig::latest()->first();
         $expense=ExpenseList::sum('expense_amount');
         $discount_amount=Discount::sum('discount_amount');      
         $total_salary=NurseSalary::sum('salary');
@@ -39,6 +42,8 @@ class AppServiceProvider extends ServiceProvider
         $net_profit=$total_income-$totalExpense;
 
         view::share('site_info',$site_info);
+        view::share('common_settings',$about_info);
+        
         view::share('totalExpense',$totalExpense);
         view::share('total_income',$total_income);
         view::share('net_profit',$net_profit);
