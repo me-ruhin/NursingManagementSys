@@ -21,6 +21,10 @@ class ExpenseController extends Controller
     public function index()
     {
 
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $categories=ExpenseCategory::latest()->get();
         $datas=ExpenseList::latest()->paginate(20);  
         $accounts=Account::latest()->get();
@@ -31,6 +35,10 @@ class ExpenseController extends Controller
 
     public function storeExpense(Request $request)
     {
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
         $request->validate([
 
@@ -78,7 +86,10 @@ class ExpenseController extends Controller
 
     public function UpdateExpense(Request $request,$id)
     {
-        
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $month=date('F-Y');
         $date=date('Y-m-d');
 
@@ -118,6 +129,10 @@ class ExpenseController extends Controller
 
     public function DeleteExpense($id)
     {
+        if(\Auth::user()->role->permissions->delete!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $expenseObj=ExpenseList::find($id);
         $month=date('F-Y');
         $date=date('Y-m-d');        

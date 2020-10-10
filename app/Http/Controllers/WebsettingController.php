@@ -19,6 +19,10 @@ class WebsettingController extends Controller
 
     public function updateSiteInfo()
     {
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $data=Websetting::latest()->first();
 
         return view('backend.settings.index',compact('data'));
@@ -26,7 +30,10 @@ class WebsettingController extends Controller
 
     public function updateInfo (Request $request)
     {
-            
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         
 
         $request->validate([

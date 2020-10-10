@@ -22,6 +22,10 @@ class ProductController extends Controller
      */
     public function index()
     {
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $datas=Product::latest()->paginate(6);
         
         return view('backend.product.index',compact('datas'));
@@ -34,6 +38,10 @@ class ProductController extends Controller
      */
     public function create()
     {
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         return view('backend.product.create');
 
     }
@@ -46,6 +54,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $request->validate([
                 'product_name'=>'required',
                 'purchase_price'=>'required',
@@ -146,6 +158,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         
         $productExtInfo=Product::find($id);
 
@@ -230,6 +246,11 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+
+        if(\Auth::user()->role->permissions->delete!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
         $productExtInfo=Product::find($id);
 

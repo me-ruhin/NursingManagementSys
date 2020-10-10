@@ -102,6 +102,26 @@
                         </div>
 
 
+                        <div class="form-group">
+                            <label>Role <span style="color:red">*<span></label>
+                                <select class="form-control" name="role_id"  id="role_id" required>
+                                    <option value="">Select Gender</option>
+                                    @foreach ($roles as $item)
+                                    <option value="{{ $item->id }}">{{ $item->role_name }}</option>
+                                        
+                                    @endforeach
+                                   
+                                </select>
+                                  
+                            @error('patient_gender')
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @enderror
+
+                        </div>
+
+
                          <div class="form-group">
                             <label for="address">Address</label>
                             <input   name="address" class="form-control" type="text" id="address" placeholder="Enter your address" required><br>
@@ -185,6 +205,7 @@
                                     <th>SL NO</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Role</th>
                                     <th>Mobile No</th> 
                                     <th style="width: 85px;">Action</th>
                                 </tr>
@@ -202,6 +223,7 @@
                                     <td>{{ $item->name }} </td>
 
                                     <td> {{ $item->email }} </td>
+                                    <td> {{ $item->role_name }} </td>
 
                                     <td> {{ $item->mobile_no }}</td>
                                      
@@ -266,7 +288,24 @@
                                         
                                                                 
                                                            
+                                                                <div class="form-group">
+                                                                    <label>Role <span style="color:red">*<span></label>
+                                                                        <select class="form-control" name="role_id"  id="role_id" required>
+                                                                            <option value="">Select Role</option>
+                                                                            @foreach ($roles as $items)
+                                                                            <option value="{{ $items->id }}" {{($items->id==$item->role_id)?'selected':'' }}>{{ $items->role_name }}</option>
+                                                                                
+                                                                            @endforeach
+                                                                           
+                                                                        </select>
+                                                                          
+                                                                    @error('patient_gender')
+                                                                        <div class="alert alert-danger" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </div>
+                                                                    @enderror
                                         
+                                                                </div>
                                         
                                         
                                         

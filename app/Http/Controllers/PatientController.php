@@ -19,6 +19,10 @@ class PatientController extends Controller
 
     public function index()
     {
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $datas=Patient::latest()->paginate(100);
 
         return view('backend.patient.index',compact('datas'));
@@ -27,6 +31,10 @@ class PatientController extends Controller
 
     public function store(Request $request){
 
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
             $month=date('F-Y');
             $date=date('Y-m-d');
@@ -72,6 +80,11 @@ class PatientController extends Controller
 
 
     public function update(Request $request,$id){
+
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
         $month=date('F-Y');
         $date=date('Y-m-d');
@@ -142,6 +155,10 @@ class PatientController extends Controller
 
 
     public function updateAssignNurse(Request $request,$id){
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
         $nurse_info=Nurse::find($request->assigned_nurse);
 

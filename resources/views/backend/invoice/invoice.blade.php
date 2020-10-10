@@ -85,6 +85,13 @@
                                         </div> <!-- end col -->
 
                                     </div> 
+                                    <div class="col-sm-412">
+                                        <h6>Dear sir/Madam,</h6>
+                                        <address>
+                                            Thanks for giving us the opportunity to serve you. We always hope and pray you and your family stay safe and healthy. Your satisfication and suggestion will help us to improve the quality of our service.
+                                           
+                                        </address>
+                                    </div>
                                     <!-- end row -->
 
 

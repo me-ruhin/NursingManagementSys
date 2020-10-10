@@ -28,6 +28,10 @@ class SaleController extends Controller
 
     
     public function index(){
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
         $products=Product::latest()->get();
         $customers=Customer::latest()->get();
@@ -56,7 +60,10 @@ class SaleController extends Controller
       // return $request->all();
 
 
-
+      if(\Auth::user()->role->permissions->create!=1){
+        Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+        return redirect()->back();
+    }
 
 
 

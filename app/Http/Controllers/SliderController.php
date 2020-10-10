@@ -8,7 +8,10 @@ use Brian2694\Toastr\Facades\Toastr;
 class SliderController extends Controller
 {
     public function index(){
-
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $datas=Slider::latest()->paginate(100);
 
         return view('backend.slider.index',compact('datas'));
@@ -17,6 +20,10 @@ class SliderController extends Controller
 
     public function store(Request $request){
 
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $request->validate([
             'image_title'=>'required',
             'slider_image'=>'required'
@@ -44,6 +51,11 @@ class SliderController extends Controller
         return redirect()->route('slider.list');
     }
     public function update(Request $request,$id){
+
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
         $slider=Slider::find($id);
 
@@ -73,6 +85,10 @@ class SliderController extends Controller
 
     public function destroy($id){
 
+        if(\Auth::user()->role->permissions->delete!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $slider=Slider::find($id);
         if($slider->image_name){
             unlink('slider/'.$slider->image_name);

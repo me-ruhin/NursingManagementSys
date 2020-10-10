@@ -30,6 +30,10 @@ class NurseController extends Controller
 
     public function index()
     {
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $datas=Nurse::latest()->paginate(50);
         return view('backend.nurse.index',compact('datas'));
     }
@@ -41,6 +45,10 @@ class NurseController extends Controller
      */
     public function create()
     {
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         return view('backend.nurse.create');
     }
 
@@ -52,6 +60,10 @@ class NurseController extends Controller
      */
     public function store(Request $request)
     {
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $request->validate([
                 'name'=>'required',
                 'mobile'=>'required',
@@ -242,6 +254,9 @@ class NurseController extends Controller
      */
     public function edit($id)
     {
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+        }
 
         $nurse_info=Nurse::find($id);
         $experience_info=NurseExperience::where('nurse_id',$id)->get();
@@ -259,6 +274,10 @@ class NurseController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
             $nurseInfo=Nurse::find($id);
     $nurseData=[];
@@ -456,7 +475,10 @@ class NurseController extends Controller
     public function destroy($id)
     {
 
-
+        if(\Auth::user()->role->permissions->delete!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
        $nurseData= Nurse::find($id);
        if($nurseData->photo){
       unlink('nurse/'.$nurseData->photo);

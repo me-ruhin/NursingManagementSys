@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\CommonConfig;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Model\User;
+use App\Model\Role;
 use Auth; 
 class SettingsController extends Controller
 {
@@ -26,6 +27,11 @@ class SettingsController extends Controller
   }
 
   public function updateInfo(Request $request){
+
+    if(\Auth::user()->role->permissions->update!=1){
+      Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+      return redirect()->back();
+  }
      
     $request->validate([
       'facebook'=>'required',
@@ -55,14 +61,22 @@ class SettingsController extends Controller
   }
 
   public function getUserList(){
+    if(\Auth::user()->role->permissions->read!=1){
+      Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+      return redirect()->back();
+  }
 
     $datas=User::latest()->paginate(100);
-
+    $roles=Role::latest()->get();
       
-    return view('backend.user_list.index',compact('datas'));
+    return view('backend.user_list.index',compact('datas','roles'));
   }
 
   public function addNewUser(Request $request){
+    if(\Auth::user()->role->permissions->create!=1){
+      Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+      return redirect()->back();
+  }
 
 
     $request->validate([
@@ -71,12 +85,18 @@ class SettingsController extends Controller
       'mobile_no'=>'required',
       'email'=>'required',
       'address'=>'required',
-      'password'=>'required|confirmed'
+      'password'=>'required|confirmed',
+      'role_id'=>'required'
       ]);
+      $role_info=Role::find($request->role_id);
       $requestData=[];
       $requestData=$request->except(['_token','password_confirmation','password']);
       $requestData['password']=bcrypt($request->password);
-
+      $requestData['role_id']=$request->role_id;
+      $requestData['role_name']=$role_info->role_name;
+      
+     
+      
       // dd($requestData);
 
 
@@ -96,7 +116,10 @@ class SettingsController extends Controller
 
 
   public function updateUserInfo(Request $request,$id){
-
+    if(\Auth::user()->role->permissions->update!=1){
+      Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+      return redirect()->back();
+  }
 
     $request->validate([
 
@@ -112,13 +135,14 @@ class SettingsController extends Controller
 
 
       
-
+          $role_info=Role::find($request->role_id);
           $user_obj=User::find($id);
           $user_obj->name=$request->name;
           $user_obj->mobile_no=$request->mobile_no;
           $user_obj->email=$request->email;
           $user_obj->address=$request->address??$user_obj->address;
-
+          $user_obj->role_id=$request->role_id;
+          $user_obj->role_name=$role_info->role_name;
           if($request->password){
             if($request->password ==$request->password_confirmation){
               $user_obj->password=bcrypt($request->password);
@@ -139,6 +163,10 @@ class SettingsController extends Controller
 
 
   public function deleteUser($id){
+    if(\Auth::user()->role->permissions->delete!=1){
+      Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+      return redirect()->back();
+  }
     if(\Auth::user()->id==$id){
       Toastr::warning('You are unable to Delete Yourself','Error');
       return redirect()->back();
@@ -147,5 +175,11 @@ class SettingsController extends Controller
     Toastr::warning('User account has been Deleted','Deleted');
     return redirect()->back();
 
+  }
+
+  public function userProfile(){
+    $item=User::find(\Auth::user()->id);
+
+    return view('backend.user_list.profile',compact('item'));
   }
 }

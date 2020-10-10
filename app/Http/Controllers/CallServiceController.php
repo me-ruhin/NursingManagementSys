@@ -24,6 +24,10 @@ class CallServiceController extends Controller
     
     public function index()
     {
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $accounts=Account::latest()->get();
         $nurses=Nurse::latest()->get();
         $datas=Callservice::latest('id')->paginate(100);
@@ -32,7 +36,10 @@ class CallServiceController extends Controller
 
     public function ServiceStore(Request $request){
 
-
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         // dd($request->all());
          
         $request->validate([

@@ -9,7 +9,10 @@ use Brian2694\Toastr\Facades\Toastr;
 class ServiceController extends Controller
 {
     public function index(){
-
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $datas=Service::latest()->paginate(100);
 
         return view('backend.service.index',compact('datas'));
@@ -18,7 +21,10 @@ class ServiceController extends Controller
 
     public function store(Request $request){
 
-
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $request->validate([
             'service_title'=>'required',
             'service_details'=>'required',
@@ -67,6 +73,9 @@ class ServiceController extends Controller
     }
     public function update(Request $request,$id){
 
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+        }
         $service=Service::find($id);
 
 
@@ -113,6 +122,10 @@ class ServiceController extends Controller
 
     public function destroy($id){
 
+        if(\Auth::user()->role->permissions->delete!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $service=Service::find($id);
 
         if($service->service_front_image){

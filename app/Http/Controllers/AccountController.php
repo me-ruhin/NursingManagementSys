@@ -16,6 +16,10 @@ class AccountController extends Controller
     
      public function index( )
     {
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
             $datas=Account::latest()->paginate(10);
  
             return view('backend.account.index',compact('datas'));
@@ -24,6 +28,10 @@ class AccountController extends Controller
 
      public function Store(Request $request)
     {
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $request->validate([
             'account_name'=>'required|unique:accounts'
         ]);
@@ -39,7 +47,10 @@ class AccountController extends Controller
 
     public function update(Request $request,$id)
     {
-
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
         $request->validate([
             'account_name'=>'required'
@@ -60,7 +71,10 @@ class AccountController extends Controller
     public function destroy($id)
     {
 
-
+        if(\Auth::user()->role->permissions->delete!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
 
         Account::find($id)->delete();

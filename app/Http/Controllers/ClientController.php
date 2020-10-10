@@ -8,6 +8,10 @@ use App\Model\Client;
 class ClientController extends Controller
 {
     public function index(){
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
         $datas=Client::latest()->paginate(100);
 
@@ -18,7 +22,10 @@ class ClientController extends Controller
 
     public function store(Request $request){
 
-
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $request->validate([
             'client_name'=>'required',
             'client_designation'=>'required',
@@ -52,6 +59,11 @@ class ClientController extends Controller
 
     public function update(Request $request,$id){
 
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
+
         $client=Client::find($id);
 
 
@@ -82,6 +94,10 @@ class ClientController extends Controller
 
     public function destroy($id){
 
+        if(\Auth::user()->role->permissions->delete!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $client=Client::find($id);
 
         if($client->client_image){

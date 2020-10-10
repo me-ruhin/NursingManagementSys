@@ -10,6 +10,10 @@ class ManpowerController extends Controller
 {
     public function index(){
 
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $datas=OurManPower::latest()->paginate(100);
 
         return view('backend.manpower.index',compact('datas'));
@@ -18,7 +22,10 @@ class ManpowerController extends Controller
 
     public function store(Request $request){
 
-
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $request->validate([
             'service_title'=>'required',
             'service_details'=>'required',
@@ -67,6 +74,11 @@ class ManpowerController extends Controller
     }
     public function update(Request $request,$id){
 
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
+
         $service=OurManPower::find($id);
 
 
@@ -112,6 +124,11 @@ class ManpowerController extends Controller
 
 
     public function destroy($id){
+
+        if(\Auth::user()->role->permissions->delete!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
         $service=OurManPower::find($id);
 

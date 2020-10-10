@@ -332,4 +332,15 @@ Route::get('/user-list','SettingsController@getUserList')->name('user.list');
  Route::post('/add-new-user','SettingsController@addNewUser')->name('add.user');
  Route::put('/update/user-info/{id}','SettingsController@updateUserInfo')->name('user.info.update');
  Route::delete('/delete/user-info/{id}','SettingsController@deleteUser')->name('user.destroy');
+ Route::get('profile/view','SettingsController@userProfile')->name('user.profile');
 
+/*Roles Route Start here*/
+
+Route::get('role-lists','RoleController@index')->name('roles.list');
+Route::post('role-add','RoleController@store')->name('add.role');
+Route::put('role-update/{id}','RoleController@update')->name('update.role');
+Route::delete('role-destroy/{id}','RoleController@destroy')->name('destroy.role');
+
+/*Set  User Permission*/
+Route::get('set/user/permission/{id}','RoleController@setUserPermission')->name('set.permission');
+Route::post('update-roles-permission/{id}','RoleController@assingPermission')->name('update.access.settings');

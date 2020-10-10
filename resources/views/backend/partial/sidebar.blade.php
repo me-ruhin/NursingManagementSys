@@ -26,7 +26,7 @@
                             </li>
 
 
-
+                        @if(\Auth::user()->role->menu->menu_hrm==1)
                             <li>
                                 <a href="#sidebarCrm" data-toggle="collapse">
                                     <i data-feather="users"></i>
@@ -35,36 +35,25 @@
                                 </a>
                                 <div class="collapse" id="sidebarCrm">
                                     <ul class="nav-second-level">
-                                        <li>
+                                        @if(\Auth::user()->role->sub_menu->nurse_list==1)
+                                        <li>                                           
                                         <a href="{{route('nurse.index')}}">Nurse List</a>
                                         </li>
+                                        @endif
 
+                                        @if(\Auth::user()->role->sub_menu->working_report==1)
                                         <li>
                                             <a href="{{ route('nurse.list') }}">Working Report</a>
-                                        </li>
-
-
-                                        {{-- <li>
-                                            <a href="#">Nurse List</a>
-                                        </li> --}}
-
-                                        {{-- <li>
-                                            <a href="crm-opportunities.html">Opportunities</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="crm-leads.html">Leads</a>
-                                        </li>
-                                        <li>
-                                            <a href="crm-customers.html">Customers</a>
-                                        </li> --}}
+                                        </li> 
+                                        @endif                               
 
                                     </ul>
                                 </div>
                             </li>
+                            @endif
 
 
-
+                            @if(\Auth::user()->role->menu->menu_client==1)
                             <li>
                                 <a href="#sidebarCustomer" data-toggle="collapse">
                                     <i data-feather="user"></i>
@@ -73,15 +62,18 @@
                                 </a>
                                 <div class="collapse" id="sidebarCustomer">
                                     <ul class="nav-second-level">
+                                        @if(\Auth::user()->role->sub_menu->client_list==1)
                                         <li>
                                         <a href="{{route('customerlist')}}">Client List</a>
                                         </li>
+                                        @endif
 
 
 
                                     </ul>
                                 </div>
                             </li>
+                            @endif
 
 
 
@@ -90,7 +82,7 @@
 
 
 
-
+                            @if(\Auth::user()->role->menu->menu_product==1)
                             <li>
                                 <a href="#sidebarEcommerce" data-toggle="collapse">
                                     <i data-feather="shopping-cart"></i>
@@ -99,18 +91,19 @@
                                 </a>
                                 <div class="collapse" id="sidebarEcommerce">
                                     <ul class="nav-second-level">
-                                        {{-- <li>
-                                            <a href="ecommerce-dashboard.html">Dashboard</a>
-                                        </li> --}}
+                                       
+                                        @if(\Auth::user()->role->sub_menu->product_list==1)
                                         <li>
                                             <a href="{{route('product.index')}}">Products</a>
                                         </li>
+                                        @endif
 
                                     </ul>
                                 </div>
                             </li>
+                            @endif
 
-
+                            @if(\Auth::user()->role->menu->menu_service==1)
                             <li>
                                 <a href="#product_section" data-toggle="collapse">
                                     <i data-feather="mail"></i>
@@ -119,57 +112,39 @@
                                 </a>
                                 <div class="collapse" id="product_section">
                                     <ul class="nav-second-level">
+                                        @if(\Auth::user()->role->sub_menu->product_rent==1)
                                         <li>
                                         <a href="{{route('sale.create')}}">Product Rent</a>
                                         </li>
+                                        @endif
 
-
+                                        @if(\Auth::user()->role->sub_menu->product_rent_list==1)
                                         <li>
                                             <a href="{{ route('sales.list') }}">Product Rent List</a>
                                         </li>
+                                        @endif
 
-
+                                        @if(\Auth::user()->role->sub_menu->call_service==1)
                                         <li>
                                             <a href="{{ route('call.service.list') }}">Call Service List</a>
                                         </li>
+                                        @endif
+                                        @if(\Auth::user()->role->sub_menu->request_service==1)
                                         <li>
                                             <a href="{{ route('request.service.list') }}">Request Service</a>
                                         </li>
+                                        @endif
 
                                     </ul>
                                 </div>
                             </li>
-
                             
-                            {{-- <li>
-                                <a href="#sidebarContacts" data-toggle="collapse">
-                                    <i data-feather="book"></i>
-                                    <span> Expense Category </span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <div class="collapse" id="sidebarContacts">
-                                    <ul class="nav-second-level">
-                                        <li>
-                                            <a href="contacts-list.html">Members List</a>
-                                        </li>
-                                        <li>
-                                            <a href="contacts-profile.html">Profile</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li> --}}
-
-
-                            {{-- <li>
-                                <a href="{{ route('expense.category.list') }}">
-                                    <span class="badge badge-pink float-right"></span>
-                                    <i data-feather="rss"></i>
-                                    <span> Expense Category</span>
-                                </a>
-                            </li> --}}
+                            @endif
+                            
+                        
 
                            
-
+                            @if(\Auth::user()->role->menu->menu_expense==1)
                             <li>
                                 <a href="#sidebarProjects" data-toggle="collapse">
                                     <i data-feather="briefcase"></i>
@@ -178,58 +153,59 @@
                                 </a>
                                 <div class="collapse" id="sidebarProjects">
                                     <ul class="nav-second-level">
-
+                                        @if(\Auth::user()->role->sub_menu->expense_category==1)
                                         <li>
                                             <a href="{{ route('expense.category.list') }}">Expense Category</a>
                                         </li>
-
+                                        @endif
+                                        @if(\Auth::user()->role->sub_menu->expense_list==1)
                                         <li>
                                             <a href="{{ route('expense.list') }}">Expense List</a>
                                         </li>
+                                        @endif
 
-
+                                        @if(\Auth::user()->role->sub_menu->salary_payment==1)
                                         <li>
                                             <a href="{{ route('nurse.list.payment') }}">Salary Payment</a>
                                         </li>
-
+                                        @endif
+                                        @if(\Auth::user()->role->sub_menu->salary_payment_list==1)
                                         <li>
                                             <a href="{{ route('nurse.slary.payment.history') }}">Salary Payment List</a>
                                         </li>
-
-
-
-                                      
-                                        {{-- <li>
-                                            <a href="project-detail.html">Detail</a>
-                                        </li>
-                                        <li>
-                                            <a href="project-create.html">Create Project</a>
-                                        </li> --}}
+                                        @endif
+ 
                                     </ul>
                                 </div>
                             </li>
+                            @endif
 
-
+                            @if(\Auth::user()->role->menu->menu_patient==1)
                             <li>
                                 <a href="#sidebarCharts" data-toggle="collapse">
                                     <i data-feather="bar-chart-2"></i>
-                                    <span> Patinets Section </span>
+                                    <span> Patients Section </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <div class="collapse" id="sidebarCharts">
                                     <ul class="nav-second-level">
+                                        @if(\Auth::user()->role->sub_menu->patient_list==1)
                                         <li>
                                             <a href="{{ route('patient.list') }}">Patients List</a>
                                         </li>
+                                        @endif
+                                        @if(\Auth::user()->role->sub_menu->assign_nurse==1)
                                         <li>
                                             <a href="{{ route('assign.nurse') }}">Assing Nurse</a>
                                         </li>
+                                        @endif
                                          
                                     </ul>
                                 </div>
                             </li>
+                            @endif
 
-
+                            @if(\Auth::user()->role->menu->menu_report==1)
                             <li>
                                 <a href="#ReportSection" data-toggle="collapse">
                                     <i data-feather="clipboard"></i>
@@ -238,24 +214,32 @@
                                 </a>
                                 <div class="collapse" id="ReportSection">
                                     <ul class="nav-second-level">
+                                        @if(\Auth::user()->role->sub_menu->total_expense==1)
                                         <li>
                                             <a href="{{ route('expense.report') }}">Total Expense</a>
                                         </li>
+                                        @endif
+
+                                        @if(\Auth::user()->role->sub_menu->total_profit==1)
                                          <li>
                                             <a href="{{ route('income.report') }}">Total Profit</a>
                                         </li>
+                                        @endif
+
+                                        @if(\Auth::user()->role->sub_menu->net_profit==1)
                                         <li>
                                             <a href="{{ route('profit.report') }}">Net Profit</a>
                                         </li>
+                                        @endif
                                        
 
                                     </ul>
                                 </div>
                             </li>
-
+                            @endif
                           
 
-
+                            @if(\Auth::user()->role->menu->menu_settings==1)
                             
                             <li>
                                 <a href="#sidebarTasks" data-toggle="collapse">
@@ -265,36 +249,51 @@
                                 </a>
                                 <div class="collapse" id="sidebarTasks">
                                     <ul class="nav-second-level">
+                                        @if(\Auth::user()->role->sub_menu->account_settings==1)
                                         <li>
                                             <a href="{{ route('account.list') }}">Account Settings</a>
                                         </li>
+                                        @endif
+                                        @if(\Auth::user()->role->sub_menu->web_settings==1)
                                          <li>
                                             <a href="{{ route('website.settings') }}">Web Settings</a>
                                         </li>
+                                        @endif
+                                        @if(\Auth::user()->role->sub_menu->slider_settings==1)
                                         <li>
                                             <a href="{{ route('slider.list') }}">Slider Settings</a>
                                         </li>
+                                        @endif
+                                        @if(\Auth::user()->role->sub_menu->service_settings==1)
 
                                         <li>
                                             <a href="{{ route('service.list') }}">Service Settings</a>
                                         </li>
+                                        @endif
+                                        @if(\Auth::user()->role->sub_menu->team_settings==1)
 
                                         <li>
                                             <a href="{{ route('team.list') }}">Our Team</a>
                                         </li>
+                                        @endif
+                                        @if(\Auth::user()->role->sub_menu->man_power_settings==1)
 
                                         <li>
                                             <a href="{{ route('manpower.list') }}">Man Power</a>
                                         </li>
-                                        
+                                        @endif
+                                        @if(\Auth::user()->role->sub_menu->client_settings==1)                                       
 
                                         <li>
                                             <a href="{{ route('client.list') }}">Happy Client Lists</a>
                                         </li>
+                                        @endif
 
+                                        @if(\Auth::user()->role->sub_menu->basic_settings==1)
                                         <li>
                                             <a href="{{ route('site.common.info') }}">Basic Settings</a>
                                         </li>
+                                        @endif
 
                                         {{-- <li>
                                             <a href="{{ route('site.common.info') }}">Basic Settings</a>
@@ -307,7 +306,9 @@
 
                             </li>
 
+                            @endif
 
+                            @if(\Auth::user()->role->menu->menu_settings==1)
                             <li>
                                 <a href="#sidebarExtendedui" data-toggle="collapse">
                                     <i data-feather="layers"></i>                                    
@@ -316,11 +317,18 @@
                                 </a>
                                 <div class="collapse" id="sidebarExtendedui">
                                     <ul class="nav-second-level">
+                                        @if(\Auth::user()->role->sub_menu->users_settings==1)
                                         <li>
                                             <a href="{{ route('user.list') }}">User List</a>
                                         </li>
+                                        @endif
+                                        @if(\Auth::user()->role->sub_menu->roles_settings==1)
 
-                                        {{-- <li>
+                                        <li> <a href="{{ route('roles.list') }}">Role List</a> </li>
+                                        @endif
+                                        {{-- 
+                                            
+                                            <li>
                                             <a href="extended-range-slider.html">Range Slider</a>
                                         </li>
                                         <li>
@@ -344,6 +352,7 @@
                                     </ul>
                                 </div>
                             </li>
+                            @endif
 
 
 {{-- 

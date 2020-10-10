@@ -13,6 +13,11 @@ use Brian2694\Toastr\Facades\Toastr;
 class SalaryController extends Controller
 {
     public function index(){
+        if(\Auth::user()->role->permissions->read!=1){
+            
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         $datas=Nurse::latest()->get();
         $accounts=Account::latest()->get();
         return view('backend.salary.index',compact('datas','accounts'));
@@ -28,7 +33,10 @@ class SalaryController extends Controller
 
     public function paymentStore(Request $request){
 
-
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
          $request->validate([
                 'nurse_id'=>'required',
                 'month'=>'required',

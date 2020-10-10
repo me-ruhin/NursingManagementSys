@@ -21,6 +21,10 @@ class CustomerController extends Controller
     }
 
     public function getCustomerList (){
+        if(\Auth::user()->role->permissions->read!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
         $datas=Customer::latest()->paginate(20);
 
@@ -30,6 +34,10 @@ class CustomerController extends Controller
 
     public function storeCustomerInfo(Request $request){
 
+        if(\Auth::user()->role->permissions->create!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
 
     	 $request->validate([
 
@@ -59,6 +67,11 @@ class CustomerController extends Controller
 
     public function update(Request $request,$id){
 
+        if(\Auth::user()->role->permissions->update!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
+
         $request->validate([
 
             'customer_name'=>'required',
@@ -81,6 +94,10 @@ class CustomerController extends Controller
 
      public function destroy($id)
     {
+        if(\Auth::user()->role->permissions->delete!=1){
+            Toastr::warning(' You are not able to  access this Feature',"Access Denied");
+            return redirect()->back();
+        }
         Customer::find($id)->delete();
 
 
