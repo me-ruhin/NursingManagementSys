@@ -61,4 +61,91 @@ class SettingsController extends Controller
       
     return view('backend.user_list.index',compact('datas'));
   }
+
+  public function addNewUser(Request $request){
+
+
+    $request->validate([
+
+      'name'=>'required',
+      'mobile_no'=>'required',
+      'email'=>'required',
+      'address'=>'required',
+      'password'=>'required|confirmed'
+      ]);
+      $requestData=[];
+      $requestData=$request->except(['_token','password_confirmation','password']);
+      $requestData['password']=bcrypt($request->password);
+
+      // dd($requestData);
+
+
+      
+
+          $user_obj=User::create($requestData);
+
+
+          if($user_obj){            
+              Toastr::success('User account has been Created','Success');
+              return redirect()->back();
+           
+          }
+
+  }
+
+
+
+  public function updateUserInfo(Request $request,$id){
+
+
+    $request->validate([
+
+      'name'=>'required',
+      'mobile_no'=>'required',
+      'email'=>'required',
+      'address'=>'required',
+      
+      ]);
+      
+
+      // dd($requestData);
+
+
+      
+
+          $user_obj=User::find($id);
+          $user_obj->name=$request->name;
+          $user_obj->mobile_no=$request->mobile_no;
+          $user_obj->email=$request->email;
+          $user_obj->address=$request->address??$user_obj->address;
+
+          if($request->password){
+            if($request->password ==$request->password_confirmation){
+              $user_obj->password=bcrypt($request->password);
+            }else{
+              Toastr::warning('Password Dosenot Match','Error');
+            }
+
+          }
+
+          $user_obj->save();
+          Toastr::info('User account has been Updated','Updated');
+              return redirect()->back();
+          
+
+
+
+  }
+
+
+  public function deleteUser($id){
+    if(\Auth::user()->id==$id){
+      Toastr::warning('You are unable to Delete Yourself','Error');
+      return redirect()->back();
+    }
+    $user_obj=User::find($id)->delete();
+    Toastr::warning('User account has been Deleted','Deleted');
+    return redirect()->back();
+
+  }
 }

@@ -9,17 +9,6 @@ use App\Model\Slider;
 use App\Model\CommonConfig;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     $datas=[];
     $datas['services']=Service::latest()->take(6)->get();
@@ -337,4 +326,10 @@ Route::get('/edit/common-info','SettingsController@editinfo')->name('site.common
 Route::post('/update/common-info','SettingsController@updateInfo')->name('site.info.update');
 Route::get('/user-list','SettingsController@getUserList')->name('user.list');
 
- 
+ /*System New user Creation*/
+
+
+ Route::post('/add-new-user','SettingsController@addNewUser')->name('add.user');
+ Route::put('/update/user-info/{id}','SettingsController@updateUserInfo')->name('user.info.update');
+ Route::delete('/delete/user-info/{id}','SettingsController@deleteUser')->name('user.destroy');
+

@@ -1,5 +1,5 @@
 @extends('backend.app')
-@section('title',"All Sliders information")
+@section('title',"All Users information")
 @push('css')
 
 @endpush
@@ -16,11 +16,11 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Homepage</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Slider</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">User</a></li>
                         <li class="breadcrumb-item active">Settings</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Slider List</h4>
+                <h4 class="page-title">User List</h4>
             </div>
         </div>
     </div>
@@ -33,12 +33,12 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            {{-- <button type="button"  data-toggle="modal" data-target="#custom-modal"></button> --}}
+                                         {{-- <button type="button"  data-toggle="modal" data-target="#custom-modal"></button> --}}
 
                         {{-- <a href=" " class="btn btn-danger waves-effect waves-light"> <i class="mdi mdi-plus-circle mr-1"></i>Add Client </a> --}}
 
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClient">
-                            <i class="mdi mdi-plus-circle mr-1"></i>Add Slider
+                            <i class="mdi mdi-plus-circle mr-1"></i>Add User
                           </button>
 
 
@@ -47,43 +47,119 @@
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="addClient">Slider's Information</h5>
+                    <h5 class="modal-title" id="addClient">User's Information</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
-                <form action="{{route('slider.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('add.user')}}" method="post" enctype="multipart/form-data">
 
                         @csrf
                     <div class="modal-body">
+                         
                         <div class="form-group">
-                            <label>Slider Name <span style="color:red"> *<span></label>
-                            <input type="text" class="form-control" data-toggle="input-mask" name="image_title" id="image_title"  placeholder="Image Name" required>
-                            {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
+                            <label for="fullname">Name</label>
+                            <input name="name" class="form-control" type="text" id="fullname" placeholder="Enter your name" required> <br>
 
-                            @error('image_title')
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
+                  
+                     @error('name')
+                            <div class="alert alert-danger" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </div>
+                      @enderror
+
+                        </div>
+
+                          <div class="form-group">
+                            <label for="emailaddress">Email address</label>
+                            <input class="form-control" type="email" id="emailaddress"  placeholder="Enter your email" name="email" required><br>
+
+                       
+                            @error('email')
+                            <div class="alert alert-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                            </div>
                             @enderror
 
                         </div>
 
+                        
+                   
+
+
+
+
                         <div class="form-group">
-                            <label>Slider Image <span style="color:red">(1920 X 810) *<span></label>
-                            <input type="file" class="form-control" data-toggle="input-mask" name="slider_image" id="slider_image"   required>
-                            
-                            @error('image_title')
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
+                            <label for="mobile_no">Mobile No</label>
+                            <input  name="mobile_no"  class="form-control" type="nubmer" id="mobile_no" placeholder="Enter mobile nubmer" required><br>
+
+                            @error('mobile_no')
+                            <div class="alert alert-danger" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </div>
                             @enderror
 
                         </div>
 
 
+                         <div class="form-group">
+                            <label for="address">Address</label>
+                            <input   name="address" class="form-control" type="text" id="address" placeholder="Enter your address" required><br>
+
+                            @error('address')
+                            <div class="alert alert-danger" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </div>
+                            @enderror
+
+                        </div>
+
+
+
+
+                      
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-group input-group-merge">
+                                <input   type="password" id="password" class="form-control" placeholder="Enter your password" name="password" required>
+                                <div class="input-group-append" data-password="false">
+                                    <div class="input-group-text">
+                                        <span class="password-eye"></span>
+                                    </div>
+                                </div>
+                            </div><br>
+
+                            @error('password')
+                            <div class="alert alert-danger" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </div>
+                            @enderror
+
+                        </div>
+
+
+                          <div class="form-group">
+                            <label for="password_confirmation">Confirm Password</label>
+                            <div class="input-group input-group-merge">
+                                <input type="password" id="password_confirmation" class="form-control" placeholder="Retype password" name="password_confirmation" required><br>
+                                <div class="input-group-append" data-password="false">
+                                    <div class="input-group-text">
+                                        <span class="password-eye"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            @error('confirm_password')
+                            <div class="alert alert-danger" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </div>
+                            @enderror
+
+           
 
                     </div>
+
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save </button>
@@ -92,6 +168,8 @@
                 </div>
                 </div>
             </div>
+
+           
 
 
                         </div>
@@ -105,7 +183,9 @@
                             <thead>
                                 <tr>
                                     <th>SL NO</th>
-                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile No</th> 
                                     <th style="width: 85px;">Action</th>
                                 </tr>
                             </thead>
@@ -119,11 +199,12 @@
                                        {{$key+1}}
                                     </td>
 
-                                    <td>
-                                    
-                                        <img src="{{asset('slider/'.$item->image_name)}}" height="100" width="250" alt="{{$item->image_title}}"/>
+                                    <td>{{ $item->name }} </td>
 
-                                    </td>
+                                    <td> {{ $item->email }} </td>
+
+                                    <td> {{ $item->mobile_no }}</td>
+                                     
 
                                   
 
@@ -138,6 +219,9 @@
                                         Edit
                                       </button>
 
+                                      <button type="submit" onclick="Delete({{$item->id}})" class="btn btn-danger"> <i class="mdi mdi-delete"><span></span></i>  </button>
+
+
                                       <!-- Modal -->
                                             <div class="modal fade" id="editModelInfo_{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="editModelInfo_{{$item->id}}" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -149,39 +233,112 @@
                                                     </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{route('slider.update',$item->id)}}" method="post" enctype="multipart/form-data">
+                                                        <form action="{{route('user.info.update',$item->id)}}" method="post" enctype="multipart/form-data">
                                                             @method('PUT')
                                                             @csrf
                                                             <div class="modal-body">
-                                                             
-                                                            <div class="form-group">
-                            <label>Slider Name <span style="color:red"> *<span></label>
-                            <input type="text" class="form-control" data-toggle="input-mask" value="{{$item->image_title}}" name="image_title" id="image_title"  placeholder="Image Name" required>
-                            {{-- <span style="color:red;display: none" id="error_nurse_name">Name field is Required</span> --}}
-
-                            @error('image_title')
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @enderror
-
-                        </div>
-
-                        <div class="form-group">
-                            <label>Slider Image <span style="color:red"> *<span></label>
-                            <input type="file" class="form-control"   data-toggle="input-mask" name="slider_image" id="slider_image"   required>
-                            
-                            @error('image_title')
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @enderror
-
-                        </div>
-
-
-
-
+                         
+                                                                <div class="form-group">
+                                                                    <label for="fullname">Name</label>
+                                                                    <input name="name" class="form-control" value="{{ $item->name }}" type="text" id="fullname" placeholder="Enter your name" required> <br>
+                                        
+                                                          
+                                                             @error('name')
+                                                                    <div class="alert alert-danger" role="alert">
+                                                                      <strong>{{ $message }}</strong>
+                                                                   </div>
+                                                              @enderror
+                                        
+                                                                </div>
+                                        
+                                                                  <div class="form-group">
+                                                                    <label for="emailaddress">Email address</label>
+                                                                    <input class="form-control" type="email"  value="{{ $item->email }}" id="emailaddress"  placeholder="Enter your email" name="email" required><br>
+                                        
+                                                               
+                                                                    @error('email')
+                                                                    <div class="alert alert-danger" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                    </div>
+                                                                    @enderror
+                                        
+                                                                </div>
+                                        
+                                                                
+                                                           
+                                        
+                                        
+                                        
+                                        
+                                                                <div class="form-group">
+                                                                    <label for="mobile_no">Mobile No</label>
+                                                                    <input  name="mobile_no"  value="{{$item->mobile_no }}" class="form-control" type="nubmer" id="mobile_no" placeholder="Enter mobile nubmer" required><br>
+                                        
+                                                                    @error('mobile_no')
+                                                                    <div class="alert alert-danger" role="alert">
+                                                                      <strong>{{ $message }}</strong>
+                                                                   </div>
+                                                                    @enderror
+                                        
+                                                                </div>
+                                        
+                                        
+                                                                 <div class="form-group">
+                                                                    <label for="address">Address</label>
+                                                                    <input   name="address" value="{{ $item->address }}"  class="form-control" type="text" id="address" placeholder="Enter your address" ><br>
+                                        
+                                                                    @error('address')
+                                                                    <div class="alert alert-danger" role="alert">
+                                                                      <strong>{{ $message }}</strong>
+                                                                   </div>
+                                                                    @enderror
+                                        
+                                                                </div>
+                                        
+                                        
+                                        
+                                        
+                                                              
+                                                                <div class="form-group">
+                                                                    <label for="password">Password</label>
+                                                                    <div class="input-group input-group-merge">
+                                                                        <input   type="password" id="password" class="form-control" placeholder="Enter your password" name="password" >
+                                                                        <div class="input-group-append" data-password="false">
+                                                                            <div class="input-group-text">
+                                                                                <span class="password-eye"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><br>
+                                        
+                                                                    @error('password')
+                                                                    <div class="alert alert-danger" role="alert">
+                                                                      <strong>{{ $message }}</strong>
+                                                                   </div>
+                                                                    @enderror
+                                        
+                                                                </div>
+                                        
+                                        
+                                                                  <div class="form-group">
+                                                                    <label for="password_confirmation">Confirm Password</label>
+                                                                    <div class="input-group input-group-merge">
+                                                                        <input type="password" id="password_confirmation" class="form-control" placeholder="Retype password" name="password_confirmation" ><br>
+                                                                        <div class="input-group-append" data-password="false">
+                                                                            <div class="input-group-text">
+                                                                                <span class="password-eye"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                        
+                                        
+                                                                    @error('confirm_password')
+                                                                    <div class="alert alert-danger" role="alert">
+                                                                      <strong>{{ $message }}</strong>
+                                                                   </div>
+                                                                    @enderror
+                                        
+                                                   
+                                        
                                                             </div>
 
                                                         <div class="modal-footer">
@@ -199,9 +356,8 @@
 
 
 
-                                        <button type="submit" onclick="Delete({{$item->id}})" class="btn btn-danger"> <i class="mdi mdi-delete"><span></span></i>  </button>
-
-                                            <form action="{{route('slider.destroy',$item->id)}}" method="POST" id="action-form-{{$item->id}}">
+                                       
+                                            <form action="{{route('user.destroy',$item->id)}}" method="POST" id="action-form-{{$item->id}}">
 
                                                     @csrf
                                                     @method('delete')
